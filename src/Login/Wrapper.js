@@ -7,6 +7,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   border-radius: 4px;
   padding: 10px;
+  padding-bottom: 150px;
   background: #42855b;
   width: 400px;
 `;

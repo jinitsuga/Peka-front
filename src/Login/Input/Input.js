@@ -9,6 +9,7 @@ export default function Input(props) {
     <Label htmlFor="email">
       {props.name}
       <InputField
+        placeholder={props.placeholder}
         value={props.value}
         type={props.type}
         name={props.name}

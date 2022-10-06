@@ -16,19 +16,25 @@ export default function Login() {
       required: true,
       error: email.error,
       errorMessage: "Ese email no es válido!",
+      placeholder: "Tu email registrado",
     },
-    // {
-    //   label: "Password",
-    //   value: password,
-    //   onChange: handlePassword,
-    //   type: "email",
-    // },
+    {
+      name: "Password",
+      label: "Password",
+      onChange: handlePassword,
+      type: "password",
+      required: true,
+      error: password.error,
+      errorMessage: "Esa contraseña no es válida",
+      placeholder: "Tu contraseña",
+    },
   ];
 
   function handlePassword(e) {
     setPassword((oldPw) => {
       return { ...oldPw, password: e.target.value };
     });
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   }
 
   function handleEmail(e) {
