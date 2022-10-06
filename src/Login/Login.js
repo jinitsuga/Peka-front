@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Wrapper } from "./Wrapper";
-import { Title } from "./Title";
-import Input from "./Input/Input";
-import { Button } from "./Button";
-import { FormWrapper } from "./FormWrapper";
-import { Link } from "./Link";
+import { Wrapper } from "../Shared/Wrapper";
+import { Title } from "../Shared/Title";
+import Input from "../Shared/Input/Input";
+import { Button } from "../Shared/Button";
+import { FormWrapper } from "../Shared/FormWrapper";
+import { Enlace } from "./Enlace";
 import { ButtonWrapper } from "./ButtonWrapper";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState({ email: "", error: false });
@@ -54,7 +55,7 @@ export default function Login() {
           return { ...oldEmail, error: false };
         });
   }
-  console.log(email);
+
   return (
     <Wrapper>
       <Title primary> Acceder a Peka:</Title>
@@ -75,8 +76,8 @@ export default function Login() {
             marginTop: "25px",
           }}
         >
-          <Link big>🌻Registrarse🌻</Link>
-          <Link>Olvidé mi contraseña :)</Link>
+          <Enlace to="/register">🌻 Registrarse 🌻</Enlace>
+          <Enlace>Olvidé mi contraseña</Enlace>
         </div>
       </ButtonWrapper>
     </Wrapper>

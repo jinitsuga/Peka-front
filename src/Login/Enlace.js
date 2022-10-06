@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Link = styled.a`
-  font-size: ${(props) => (props.big ? "15px" : "11px")};
+export const Enlace = styled(Link)`
+  font-size: ${(props) => (props.large ? "16px" : "13px")};
   font-family: "Roboto", sans-serif;
   height: 20px;
   text-decoration: none;
