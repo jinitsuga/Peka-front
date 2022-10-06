@@ -4,24 +4,20 @@ import { Label } from "./Label";
 import { ErrorMessage } from "./ErrorMsg";
 
 export default function Input(props) {
-  const inputRef = React.useRef(null);
-
+  console.log(props.error);
   return (
     <Label htmlFor="email">
-      Email
+      {props.name}
       <InputField
-        ref={inputRef}
+        value={props.value}
         type={props.type}
         name={props.name}
         required={props.required}
         onChange={(e) => {
-          props.handleChange(e);
+          props.onChange(e);
         }}
       ></InputField>
-      <ErrorMessage>
-        {" "}
-        {props.email ? "Ingresa un email válido" : props.errorDetails}
-      </ErrorMessage>
+      <ErrorMessage error={props.error}>{props.errorMessage}</ErrorMessage>
     </Label>
   );
 }

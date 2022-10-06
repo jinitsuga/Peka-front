@@ -4,7 +4,6 @@ const InputField = styled.input.attrs((props) => ({
   name: props.name,
   type: props.type,
   placeholder: "Tu email registrado",
-  pattern: "/^[a-zA-Z0-9]*$/",
 }))`
   font-family: "Roboto", sans-serif;
   border: none;

@@ -1,13 +1,9 @@
 import styled, { css } from "styled-components";
 
 const ErrorMessage = styled.span`
-  display: block;
-  font-size: 14px;
-  color: blue;
-
-  ${(props) => props.ref}::invalid & {
-    color: red;
-  }
+  display: ${(props) => (props.error ? "block" : "none")};
+  font-size: 12px;
+  color: red;
 `;
 
 export { ErrorMessage };
