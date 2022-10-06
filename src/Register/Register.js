@@ -5,6 +5,7 @@ import { FormWrapper } from "../Shared/FormWrapper";
 import Input from "../Shared/Input/Input";
 import { Form } from "react-router-dom";
 import { Button } from "../Shared/Button";
+import { Enlace } from "../Shared/Enlace";
 
 export default function Register(props) {
   const [name, setName] = useState({ name: null, error: false });
@@ -112,6 +113,7 @@ export default function Register(props) {
         })}
       </FormWrapper>
       <Button>Registrarse</Button>
+      <Enlace to="/">Ya te registraste? Entrá!</Enlace>
     </Wrapper>
   );
 }
