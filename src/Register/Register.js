@@ -6,13 +6,84 @@ import Input from "../Shared/Input/Input";
 import { Form } from "react-router-dom";
 
 export default function Register(props) {
-  const [name, setName] = useState({ name: "", error: false });
-  const [email, setEmail] = useState({ email: "", error: false });
-  const [password, setPassword] = useState({ password: "", error: false });
+  const [name, setName] = useState({ name: null, error: false });
+  const [email, setEmail] = useState({ email: null, error: false });
+  const [password, setPassword] = useState({ password: null, error: false });
+  const [confirmPassword, setconfirmPassword] = useState({
+    confirmPassword: "",
+    error: false,
+  });
+
+  const formData = [
+    {
+      name: "Nombre",
+      label: "Nombre",
+      onChange: handleName,
+      type: "text",
+      required: true,
+      error: name.error,
+      errorMessage:
+        "Tu nombre debe tener entre 3 y 16 caracteres alfanuméricos",
+      placeholder: "Tu nombre",
+    },
+    {
+      name: "Email",
+      label: "Email",
+      onChange: handleEmail,
+      type: "email",
+      required: true,
+      error: email.error,
+      errorMessage: "Ese formato de email no es válido.",
+      placeholder: "Dirección de email que quieras registrar",
+    },
+    {
+      name: "Contraseña",
+      label: "Contraseña",
+      onChange: handlePassword,
+      type: "password",
+      required: true,
+      error: password.error,
+      errorMessage:
+        "Tu contraseña debe tener al menos 8 caracteres, una letra y un número.",
+      placeholder: "Contraseña",
+    },
+    {
+      name: "Confirmar contraseña",
+      label: "Confirmar contraseña",
+      onChange: handlePassword,
+      type: "password",
+      required: true,
+      error: confirmPassword.error,
+      errorMessage: "Las contraseñas no son iguales.",
+      placeholder: "Confirma tu contraseña",
+    },
+  ];
+
+  // Validation / state handling functions
+  function handleEmail(e) {
+    setEmail((oldEmail) => {
+      return { ...oldEmail, email: e.target.value };
+    });
+    const regex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6})*$/;
+    !regex.test(email.email)
+      ? setEmail((oldEmail) => {
+          return { ...oldEmail, error: true };
+        })
+      : setEmail((oldEmail) => {
+          return { ...oldEmail, error: false };
+        });
+  }
+
+  function handlePassword(e) {
+    setPassword((oldPw) => {
+      return { ...oldPw, password: e.target.value };
+    });
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  }
 
   return (
     <Wrapper>
-      <Title primary>Regístrate</Title>
+      <Title primary>❁ Regístrate</Title>
       <FormWrapper></FormWrapper>
     </Wrapper>
   );
