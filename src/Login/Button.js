@@ -9,6 +9,7 @@ export const Button = styled.button`
   height: ${(props) => (props.primary ? "55px" : "35px")};
   color: #483838;
   background: #d2d79f;
+  margin-bottom: 20px;
   &:hover {
     color: #d2d79f;
     background: #42855B;

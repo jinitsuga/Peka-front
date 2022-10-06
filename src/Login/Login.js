@@ -64,19 +64,20 @@ export default function Login() {
         })}
       </FormWrapper>
       <ButtonWrapper>
+        <Button primary>Ingresar</Button>
         <div
           className="login-links"
           style={{
-            width: "225px",
+            width: "250px",
             display: "flex",
             justifyContent: "space-between",
-            marginBottom: "25px",
+            alignItems: "center",
+            marginTop: "25px",
           }}
         >
-          <Link>Registrarse</Link>
+          <Link big>🌻Registrarse🌻</Link>
           <Link>Olvidé mi contraseña :)</Link>
         </div>
-        <Button primary>Ingresar</Button>
       </ButtonWrapper>
     </Wrapper>
   );
