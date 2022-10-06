@@ -4,6 +4,7 @@ import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import Input from "../Shared/Input/Input";
 import { Form } from "react-router-dom";
+import { Button } from "../Shared/Button";
 
 export default function Register(props) {
   const [name, setName] = useState({ name: null, error: false });
@@ -60,6 +61,20 @@ export default function Register(props) {
   ];
 
   // Validation / state handling functions
+  function handleName(e) {
+    setName((oldName) => {
+      return { ...oldName, name: e.target.value };
+    });
+    const regex = /^[a-z0-9_-]{3,16}$/;
+    !regex.test(name.name)
+      ? setName((oldName) => {
+          return { ...oldName, error: true };
+        })
+      : setName((oldName) => {
+          return { ...oldName, error: false };
+        });
+  }
+
   function handleEmail(e) {
     setEmail((oldEmail) => {
       return { ...oldEmail, email: e.target.value };
@@ -79,12 +94,24 @@ export default function Register(props) {
       return { ...oldPw, password: e.target.value };
     });
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    !regex.test(password.password)
+      ? setPassword((oldPw) => {
+          return { ...oldPw, error: true };
+        })
+      : setPassword((oldPw) => {
+          return { ...oldPw, error: false };
+        });
   }
 
   return (
     <Wrapper>
       <Title primary>❁ Regístrate</Title>
-      <FormWrapper></FormWrapper>
+      <FormWrapper>
+        {formData.map((el, index) => {
+          return <Input {...el} key={index} />;
+        })}
+      </FormWrapper>
+      <Button>Registrarse</Button>
     </Wrapper>
   );
 }

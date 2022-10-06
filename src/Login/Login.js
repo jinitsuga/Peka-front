@@ -4,7 +4,7 @@ import { Title } from "../Shared/Title";
 import Input from "../Shared/Input/Input";
 import { Button } from "../Shared/Button";
 import { FormWrapper } from "../Shared/FormWrapper";
-import { Enlace } from "./Enlace";
+import { Enlace } from "../Shared/Enlace";
 import { ButtonWrapper } from "./ButtonWrapper";
 import { Link } from "react-router-dom";
 
