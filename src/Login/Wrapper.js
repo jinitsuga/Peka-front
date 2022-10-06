@@ -8,7 +8,7 @@ const Wrapper = styled.section`
   border-radius: 4px;
   padding: 10px;
   padding-bottom: 150px;
-  background: #42855b;
+  background: #90b77d;
   width: 400px;
 `;
 

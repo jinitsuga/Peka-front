@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Wrapper } from "./Wrapper";
 import { Title } from "./Title";
 import Input from "./Input/Input";
+import { Button } from "./Button";
+import { FormWrapper } from "./FormWrapper";
+import { Link } from "./Link";
+import { ButtonWrapper } from "./ButtonWrapper";
 
 export default function Login() {
   const [email, setEmail] = useState({ email: "", error: false });
@@ -19,8 +23,8 @@ export default function Login() {
       placeholder: "Tu email registrado",
     },
     {
-      name: "Password",
-      label: "Password",
+      name: "Contraseña",
+      label: "Contraseña",
       onChange: handlePassword,
       type: "password",
       required: true,
@@ -54,9 +58,26 @@ export default function Login() {
   return (
     <Wrapper>
       <Title primary> Acceder a Peka:</Title>
-      {formData.map((el, index) => {
-        return <Input {...el} key={index} />;
-      })}
+      <FormWrapper>
+        {formData.map((el, index) => {
+          return <Input {...el} key={index} />;
+        })}
+      </FormWrapper>
+      <ButtonWrapper>
+        <div
+          className="login-links"
+          style={{
+            width: "225px",
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "25px",
+          }}
+        >
+          <Link>Registrarse</Link>
+          <Link>Olvidé mi contraseña :)</Link>
+        </div>
+        <Button primary>Ingresar</Button>
+      </ButtonWrapper>
     </Wrapper>
   );
 }
