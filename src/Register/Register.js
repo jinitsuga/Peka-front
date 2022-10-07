@@ -11,8 +11,8 @@ export default function Register(props) {
   const [name, setName] = useState({ name: null, error: false });
   const [email, setEmail] = useState({ email: null, error: false });
   const [password, setPassword] = useState({ password: null, error: false });
-  const [confirmPassword, setconfirmPassword] = useState({
-    confirmPassword: "",
+  const [confirmPassword, setConfirmPassword] = useState({
+    confirmPassword: null,
     error: false,
   });
 
@@ -42,7 +42,9 @@ export default function Register(props) {
     {
       name: "Contraseña",
       label: "Contraseña",
-      onChange: handlePassword,
+      onChange: (e) => {
+        handlePassword(e);
+      },
       type: "password",
       required: true,
       error: password.error,
@@ -53,7 +55,7 @@ export default function Register(props) {
     {
       name: "Confirmar contraseña",
       label: "Confirmar contraseña",
-      onChange: handlePassword,
+      onChange: handlePasswordConfirmation,
       type: "password",
       required: true,
       error: confirmPassword.error,
@@ -92,9 +94,6 @@ export default function Register(props) {
   }
 
   function handlePassword(e) {
-    setPassword((oldPw) => {
-      return { ...oldPw, password: e.target.value };
-    });
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     !regex.test(password.password)
       ? setPassword((oldPw) => {
@@ -103,6 +102,14 @@ export default function Register(props) {
       : setPassword((oldPw) => {
           return { ...oldPw, error: false };
         });
+    setPassword((oldPw) => {
+      return { ...oldPw, password: e.target.value };
+    });
+  }
+  function handlePasswordConfirmation(e) {
+    setConfirmPassword((oldConfirm) => {
+      return { ...oldConfirm, confirmPassword: e.target.value };
+    });
   }
 
   return (

@@ -4,7 +4,6 @@ import { Label } from "./Label";
 import { ErrorMessage } from "./ErrorMsg";
 
 export default function Input(props) {
-  console.log(props.error);
   return (
     <Label htmlFor="email" secondary={props.secondary}>
       {props.name}
