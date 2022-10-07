@@ -77,7 +77,7 @@ export default function Login() {
           }}
         >
           <Enlace to="/register">🌻 Registrarse 🌻</Enlace>
-          <Enlace>Olvidé mi contraseña</Enlace>
+          <Enlace to="/passreset">Olvidé mi contraseña</Enlace>
         </div>
       </ButtonWrapper>
     </Wrapper>

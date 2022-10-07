@@ -16,6 +16,7 @@ export default function Register(props) {
     error: false,
   });
 
+  // Form data to loop through - potentially better in separate file?
   const formData = [
     {
       name: "Nombre",
@@ -66,7 +67,7 @@ export default function Register(props) {
     setName((oldName) => {
       return { ...oldName, name: e.target.value };
     });
-    const regex = /^[a-z0-9_-]{3,16}$/;
+    const regex = /^[A-Za-z0-9_-]{2,16}$/;
     !regex.test(name.name)
       ? setName((oldName) => {
           return { ...oldName, error: true };

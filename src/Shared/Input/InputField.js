@@ -7,6 +7,7 @@ const InputField = styled.input.attrs((props) => ({
 }))`
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+  color: #483838;
   border: none;
   border-radius: 3px;
   width: 250px;
