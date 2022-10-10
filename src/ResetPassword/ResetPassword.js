@@ -14,15 +14,13 @@ export default function ResetPassword() {
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
-    setEmail((oldData) => {
-      return { ...oldData, [name]: value };
-    });
+    setEmail(value);
   };
 
   const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/;
   const emailValid = emailRegex.test(email);
 
-  console.log(emailValid);
+  console.log(email);
   return (
     <Wrapper>
       <FormWrapper style={{ display: passReset ? "none" : "flex" }}>
