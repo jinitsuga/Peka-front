@@ -5,15 +5,15 @@ const InputField = styled.input.attrs((props) => ({
   type: props.type,
   placeholder: props.placeholder,
 }))`
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   font-weight: 500;
   color: #483838;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   width: 250px;
   height: 30px;
   text-indent: 6px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   margin-top: 5px;
   &::placeholder {
     font-size: 12px;

@@ -4,65 +4,67 @@ import { Title } from "../Shared/Title";
 import Input from "../Shared/Input/Input";
 import { Button } from "../Shared/Button";
 import { FormWrapper } from "../Shared/FormWrapper";
-import { Enlace } from "../Shared/Enlace";
+import { StyledLink } from "../Shared/StyledLink";
 import { ButtonWrapper } from "./ButtonWrapper";
 import { Link } from "react-router-dom";
+import { ErrorMessage } from "../Shared/ErrorMsg";
 
 export default function Login() {
-  const [email, setEmail] = useState({ email: "", error: false });
-  const [password, setPassword] = useState({ password: "", error: false });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.currentTarget;
+    setLoginData((oldData) => {
+      return { ...oldData, [name]: value };
+    });
+  };
 
   const formData = [
     {
-      name: "Email",
+      name: "email",
       label: "Email",
-      onChange: handleEmail,
+      onChange: handleChange,
       type: "email",
       required: true,
-      error: email.error,
       errorMessage: "Ese email no es válido!",
       placeholder: "Tu email registrado",
+      pattern: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/,
     },
     {
-      name: "Contraseña",
+      name: "password",
       label: "Contraseña",
-      onChange: handlePassword,
+      onChange: handleChange,
       type: "password",
       required: true,
-      error: password.error,
-      errorMessage: "Esa contraseña no es válida",
+      errorMessage:
+        "Tu contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.",
       placeholder: "Tu contraseña",
+      pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     },
   ];
-
-  function handlePassword(e) {
-    setPassword((oldPw) => {
-      return { ...oldPw, password: e.target.value };
-    });
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  }
-
-  function handleEmail(e) {
-    setEmail((oldEmail) => {
-      return { ...oldEmail, email: e.target.value };
-    });
-    const regex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6})*$/;
-    !regex.test(email.email)
-      ? setEmail((oldEmail) => {
-          return { ...oldEmail, error: true };
-        })
-      : setEmail((oldEmail) => {
-          return { ...oldEmail, error: false };
-        });
-  }
+  const emailValid = formData[0].pattern.test(loginData.email);
+  const passwordValid = formData[1].pattern.test(loginData.password);
 
   return (
     <Wrapper>
-      <Title primary> Acceder a Peka:</Title>
+      <Title> Acceder a Peka:</Title>
       <FormWrapper>
-        {formData.map((el, index) => {
-          return <Input {...el} key={index} />;
-        })}
+        <div className="input-wrap">
+          <Input {...formData[0]} />
+          {!emailValid && loginData.email ? (
+            <ErrorMessage>{formData[0].errorMessage}</ErrorMessage>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="input-wrap">
+          <Input {...formData[1]} />
+          {!passwordValid && loginData.password ? (
+            <ErrorMessage>{formData[1].errorMessage}</ErrorMessage>
+          ) : (
+            ""
+          )}
+        </div>
       </FormWrapper>
       <ButtonWrapper>
         <Button primary>Ingresar</Button>
@@ -76,8 +78,8 @@ export default function Login() {
             marginTop: "25px",
           }}
         >
-          <Enlace to="/register">🌻 Registrarse 🌻</Enlace>
-          <Enlace to="/passreset">Olvidé mi contraseña</Enlace>
+          <StyledLink to="/register">🌻 Registrarse 🌻</StyledLink>
+          <StyledLink to="/passreset">Olvidé mi contraseña</StyledLink>
         </div>
       </ButtonWrapper>
     </Wrapper>

@@ -3,19 +3,32 @@ import { Title } from "../Shared/Title";
 import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import Input from "../Shared/Input/Input";
-import { Form } from "react-router-dom";
 import { Button } from "../Shared/Button";
-import { Enlace } from "../Shared/Enlace";
+import { StyledLink } from "../Shared/StyledLink";
 import { ErrorMessage } from "../Shared/ErrorMsg";
 // Make one singular handling function for every prop of that state, matching with target name
 
 export default function Register(props) {
   const [registrationData, setRegistrationData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
+    name: null,
+    email: null,
+    password: null,
+    passwordConfirm: null,
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.currentTarget;
+    setRegistrationData((oldData) => {
+      return { ...oldData, [name]: value };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (nameValid && emailValid && passwordValid && confirmPasswordValid) {
+      console.log("data registered");
+    }
+  };
 
   // Form data to loop through - potentially better in separate file?
   const formData = [
@@ -27,7 +40,7 @@ export default function Register(props) {
       type: "text",
       required: true,
       errorMessage:
-        "Tu nombre debe tener entre 3 y 16 caracteres alfanuméricos",
+        "Tu nombre debe tener entre 3 y 16 caracteres alfanuméricos.",
       placeholder: "Tu nombre",
       pattern: /^[a-zA-Z0-9_-]{3,16}$/,
     },
@@ -40,6 +53,7 @@ export default function Register(props) {
       required: true,
       errorMessage: "Ese formato de email no es válido.",
       placeholder: "Dirección de email que quieras registrar",
+      pattern: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/,
     },
     {
       name: "password",
@@ -49,8 +63,9 @@ export default function Register(props) {
       type: "password",
       required: true,
       errorMessage:
-        "Tu contraseña debe tener al menos 8 caracteres, una letra y un número.",
+        "Tu contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.",
       placeholder: "Contraseña",
+      pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     },
     {
       name: "passwordConfirm",
@@ -59,18 +74,15 @@ export default function Register(props) {
       onChange: handleChange,
       type: "password",
       required: true,
-      errorMessage: "Las contraseñas no son iguales.",
+      errorMessage: "Las contraseñas no coinciden.",
       placeholder: "Confirma tu contraseña",
     },
   ];
   const nameValid = formData[0].pattern.test(registrationData.name);
-  // state handling function
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setRegistrationData((oldData) => {
-      return { ...oldData, [name]: value };
-    });
-  }
+  const emailValid = formData[1].pattern.test(registrationData.email);
+  const passwordValid = formData[2].pattern.test(registrationData.password);
+  const confirmPasswordValid =
+    registrationData.password === registrationData.passwordConfirm;
 
   return (
     <Wrapper>
@@ -78,7 +90,7 @@ export default function Register(props) {
       <FormWrapper>
         <div className="input-wrap">
           <Input {...formData[0]}></Input>
-          {!nameValid ? (
+          {!nameValid && registrationData.name ? (
             <ErrorMessage>{formData[0].errorMessage}</ErrorMessage>
           ) : (
             ""
@@ -86,16 +98,37 @@ export default function Register(props) {
         </div>
         <div className="input-wrap">
           <Input {...formData[1]}></Input>
+          {!emailValid && registrationData.email ? (
+            <ErrorMessage>{formData[1].errorMessage}</ErrorMessage>
+          ) : (
+            ""
+          )}
         </div>
         <div className="input-wrap">
           <Input {...formData[2]}></Input>
+          {!passwordValid && registrationData.password ? (
+            <ErrorMessage>{formData[2].errorMessage}</ErrorMessage>
+          ) : (
+            ""
+          )}
         </div>
         <div className="input-wrap">
           <Input {...formData[3]}></Input>
+          {!confirmPasswordValid && registrationData.passwordConfirm ? (
+            <ErrorMessage>{formData[3].errorMessage}</ErrorMessage>
+          ) : (
+            ""
+          )}
         </div>
       </FormWrapper>
-      <Button>Registrarse</Button>
-      <Enlace to="/">Ya te registraste? Entrá!</Enlace>
+      <Button
+        onClick={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        Registrarse
+      </Button>
+      <StyledLink to="/">Ya te registraste? Entrá!</StyledLink>
     </Wrapper>
   );
 }

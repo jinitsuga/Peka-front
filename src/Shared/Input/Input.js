@@ -17,7 +17,7 @@ export default function Input(props) {
           props.onChange(e);
         }}
       ></InputField>
-      <ErrorMessage error={props.error}></ErrorMessage>
+      <ErrorMessage></ErrorMessage>
     </Label>
   );
 }

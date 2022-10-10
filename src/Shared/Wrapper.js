@@ -7,8 +7,9 @@ const Wrapper = styled.section`
   flex-direction: column;
   border-radius: 4px;
   padding: 10px;
-  padding-bottom: 75px;
+  padding-bottom: 45px;
   background: #90b77d;
+
   width: 400px;
 `;
 
