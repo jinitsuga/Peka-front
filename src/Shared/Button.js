@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Button = styled.button`
   display: flex;
@@ -31,4 +31,14 @@ const SecondaryButton = styled(Button)`
   width: 90px;
   height: 40px;
 `;
-export { Button, SecondaryButton };
+
+const NavButton = styled(SecondaryButton)`
+  background: #90b77d;
+  color: #483838;
+  &:hover {
+    color: #d2d79f;
+    background: #42855b;
+    transform: scale(1.07);
+  }
+`;
+export { Button, SecondaryButton, NavButton };

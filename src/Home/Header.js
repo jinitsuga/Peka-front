@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Wrapper = styled.section`
+const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,14 +8,11 @@ const Wrapper = styled.section`
   border-radius: 4px;
   padding: 10px;
   padding-bottom: 45px;
-  background: #90b77d;
   width: 450px;
   max-width: 480px;
+  background: #42855b;
 `;
 
-const BrownWrapper = styled(Wrapper)`
-  background: #483838;
-  padding: 25px;
-`;
-
-export { Wrapper, BrownWrapper };
+export { Header };
+// Titlo + username - Notificaciones icon
+// Navegación: botón de oferta y botón de búsqueda

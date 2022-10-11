@@ -78,6 +78,7 @@ export default function Register(props) {
       placeholder: "Confirma tu contraseña",
     },
   ];
+
   const nameValid = formData[0].pattern.test(registrationData.name);
   const emailValid = formData[1].pattern.test(registrationData.email);
   const passwordValid = formData[2].pattern.test(registrationData.password);

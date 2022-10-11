@@ -13,7 +13,7 @@ export default function ResetPassword() {
   const [passReset, setPassReset] = React.useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.currentTarget;
+    const { value } = e.currentTarget;
     setEmail(value);
   };
 
