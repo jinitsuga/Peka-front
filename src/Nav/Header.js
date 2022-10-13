@@ -7,10 +7,10 @@ const Header = styled.header`
   flex-direction: column;
   border-radius: 4px;
   padding: 10px;
-  padding-bottom: 45px;
+  padding-bottom: 25px;
   width: 450px;
   max-width: 480px;
-  background: #42855b;
+  background: #90b77d;
 `;
 
 export { Header };
