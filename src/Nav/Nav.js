@@ -6,7 +6,7 @@ import { Notifications } from "./Notifications";
 import { Navbar } from "./Navbar";
 import { NavLink } from "../Shared/StyledLink";
 
-export default function Home() {
+export default function Nav() {
   return (
     <Header>
       <div

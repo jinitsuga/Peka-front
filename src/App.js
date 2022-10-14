@@ -1,14 +1,15 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import RouteSwitch from "./Router/RouteSwitch";
+import Nav from "./Nav/Nav";
+import { UserContextProvider } from "./Context/UserContext";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
-
   return (
     <div className="App">
-      <RouteSwitch loggedIn={loggedIn}></RouteSwitch>
+      <UserContextProvider>
+        <RouteSwitch></RouteSwitch>
+      </UserContextProvider>
     </div>
   );
 }
