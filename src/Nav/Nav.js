@@ -5,13 +5,15 @@ import { Title } from "../Shared/Title";
 import { Notifications } from "./Notifications";
 import { Navbar } from "./Navbar";
 import { NavLink } from "../Shared/StyledLink";
-import { UserInfo } from "../Context/UserContext";
+import { UserInfo, LoggedStatus } from "../Context/UserContext";
 
 export default function Nav() {
-  const userName = UserInfo().name;
+  const userLoggedIn = LoggedStatus();
+
+  const username = UserInfo().user.name;
 
   return (
-    <Header>
+    <Header style={{ borderBottom: "solid 4px #483838 " }}>
       <div
         className="head-wrapper"
         style={{
@@ -24,7 +26,7 @@ export default function Nav() {
         }}
       >
         <Title style={{ marginTop: "0", marginLeft: "25px", color: "#42855B" }}>
-          Hola, usuario!
+          Hola, {username}!
         </Title>
         <Notifications style={{ marginRight: "15px" }}> notif</Notifications>
       </div>
@@ -35,6 +37,3 @@ export default function Nav() {
     </Header>
   );
 }
-
-// Header / Nav
-// 'Homepage' con opción de hacer una busqueda o hacer una oferta

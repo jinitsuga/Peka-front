@@ -5,7 +5,7 @@ import { ErrorMessage } from "../ErrorMsg";
 
 export default function Input(props) {
   return (
-    <Label htmlFor="email" secondary={props.secondary}>
+    <Label secondary={props.secondary}>
       {props.label}
       <InputField
         placeholder={props.placeholder}

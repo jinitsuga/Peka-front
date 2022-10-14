@@ -7,7 +7,7 @@ import { FormWrapper } from "../Shared/FormWrapper";
 import { StyledLink } from "../Shared/StyledLink";
 import { ButtonWrapper } from "./ButtonWrapper";
 import { ErrorMessage } from "../Shared/ErrorMsg";
-import { UserInfo, UpdateUser } from "../Context/UserContext";
+import { UserInfo, UpdateUser, UpdateLogin } from "../Context/UserContext";
 
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -15,6 +15,8 @@ export default function Login() {
   // Context variables
   const userInfo = UserInfo();
   const updateUser = UpdateUser();
+
+  const logUser = UpdateLogin();
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -74,7 +76,12 @@ export default function Login() {
         <Button
           primary
           onClick={() => {
-            updateUser(loginData);
+            updateUser({
+              user: {
+                name: "Fermio",
+              },
+            });
+            logUser(true);
           }}
         >
           Ingresar
@@ -95,14 +102,4 @@ export default function Login() {
       </ButtonWrapper>
     </Wrapper>
   );
-}
-
-{
-  /* <Input
-email
-type="email"
-name="email"
-required={true}
-handleChange={handleEmail}
-></Input> */
 }
