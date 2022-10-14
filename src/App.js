@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useContext } from "react";
+import React from "react";
 import RouteSwitch from "./Router/RouteSwitch";
 import Nav from "./Nav/Nav";
 import { UserContextProvider } from "./Context/UserContext";

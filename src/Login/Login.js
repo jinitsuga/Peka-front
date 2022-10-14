@@ -6,11 +6,15 @@ import { Button } from "../Shared/Button";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { StyledLink } from "../Shared/StyledLink";
 import { ButtonWrapper } from "./ButtonWrapper";
-import { Link } from "react-router-dom";
 import { ErrorMessage } from "../Shared/ErrorMsg";
+import { UserInfo, UpdateUser } from "../Context/UserContext";
 
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  // Context variables
+  const userInfo = UserInfo();
+  const updateUser = UpdateUser();
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -67,7 +71,14 @@ export default function Login() {
         </div>
       </FormWrapper>
       <ButtonWrapper>
-        <Button primary>Ingresar</Button>
+        <Button
+          primary
+          onClick={() => {
+            updateUser(loginData);
+          }}
+        >
+          Ingresar
+        </Button>
         <div
           className="login-links"
           style={{
