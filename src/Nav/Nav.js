@@ -10,7 +10,8 @@ import { UserInfo, LoggedStatus } from "../Context/UserContext";
 export default function Nav() {
   const userLoggedIn = LoggedStatus();
 
-  const username = UserInfo().user.name;
+  const userData = UserInfo();
+  console.log(userData);
 
   return (
     <Header style={{ borderBottom: "solid 4px #483838 " }}>
@@ -26,7 +27,7 @@ export default function Nav() {
         }}
       >
         <Title style={{ marginTop: "0", marginLeft: "25px", color: "#42855B" }}>
-          Hola, {username}!
+          Hola, {userData.name}!
         </Title>
         <Notifications style={{ marginRight: "15px" }}> notif</Notifications>
       </div>

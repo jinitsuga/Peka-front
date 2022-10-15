@@ -40,7 +40,7 @@ export default function Register(props) {
       redirect: "follow",
     };
 
-    fetch("https://peka-api-wt2x.onrender.com/signup", reqOptions)
+    await fetch("https://peka-api-wt2x.onrender.com/signup", reqOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log(error));

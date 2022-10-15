@@ -25,6 +25,32 @@ export default function Login() {
     });
   };
 
+  async function logUserIn() {
+    const reqHeaders = new Headers();
+    reqHeaders.append("Content-type", "application/json");
+
+    const reqData = JSON.stringify({
+      email: loginData.email,
+      password: loginData.password,
+    });
+
+    const reqOptions = {
+      method: "POST",
+      headers: reqHeaders,
+      body: reqData,
+      redirect: "follow",
+    };
+
+    await fetch("https://peka-api-wt2x.onrender.com/signin", reqOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        const respObj = JSON.parse(result);
+        updateUser({ name: respObj.user.name, email: respObj.user.email });
+        logUser(true);
+      })
+      .catch((error) => console.log("error => ", error));
+  }
+
   const formData = [
     {
       name: "email",
@@ -48,8 +74,16 @@ export default function Login() {
       pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     },
   ];
+
   const emailValid = formData[0].pattern.test(loginData.email);
   const passwordValid = formData[1].pattern.test(loginData.password);
+
+  async function handleLogin(e) {
+    if (emailValid && passwordValid) {
+      await logUserIn();
+      console.log("user logged in");
+    }
+  }
 
   return (
     <Wrapper>
@@ -76,12 +110,7 @@ export default function Login() {
         <Button
           primary
           onClick={() => {
-            updateUser({
-              user: {
-                name: "Fermio",
-              },
-            });
-            logUser(true);
+            handleLogin();
           }}
         >
           Ingresar
