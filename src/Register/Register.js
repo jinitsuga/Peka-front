@@ -23,12 +23,36 @@ export default function Register(props) {
     });
   };
 
-  const handleSubmit = (e) => {
+  async function signUserUp() {
+    const reqHeaders = new Headers();
+    reqHeaders.append("Content-type", "application/json");
+
+    const reqData = JSON.stringify({
+      name: registrationData.name,
+      email: registrationData.email,
+      password: registrationData.password,
+    });
+
+    const reqOptions = {
+      method: "POST",
+      headers: reqHeaders,
+      body: reqData,
+      redirect: "follow",
+    };
+
+    fetch("https://peka-api-wt2x.onrender.com/signup", reqOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
     if (nameValid && emailValid && passwordValid && confirmPasswordValid) {
+      await signUserUp();
       console.log("data registered");
     }
-  };
+  }
 
   // Form data to loop through - potentially better in separate file?
   const formData = [
