@@ -8,8 +8,13 @@ export function Home() {
     <Wrapper>
       <FormWrapper>
         <FilterInput
+          style={{ marginBottom: "100px" }}
           label="¿Qué estás buscando?"
           placeholder="ej: tomate, rúcula, apio..."
+        ></FilterInput>
+        <FilterInput
+          label="¿Qué te gustaría ofrecer?"
+          placeholder="ej: lechuga, limones, menta..."
         ></FilterInput>
       </FormWrapper>
     </Wrapper>

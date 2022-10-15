@@ -3,7 +3,7 @@ import { Label } from "./Input/Label";
 
 export function FilterInput(props) {
   return (
-    <Label>
+    <Label style={{ marginBottom: "35px", marginTop: "25px" }}>
       {props.label}
       <InputField
         style={{ marginTop: "30px" }}
