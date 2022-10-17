@@ -2,8 +2,15 @@ import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { FilterInput } from "../Shared/FilterInput";
 import { Title } from "../Shared/Title";
+import { GetProducts } from "../Context/UserContext";
+import React from "react";
 
-export function Home() {
+export function Home(props) {
+  React.useEffect(() => {
+    props.setProducts(["lul"]);
+  }, []);
+  const prodos = GetProducts();
+  console.log(prodos);
   return (
     <Wrapper>
       <FormWrapper>

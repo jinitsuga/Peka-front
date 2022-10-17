@@ -6,10 +6,11 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Nav from "../Nav/Nav";
 import { Home } from "../Home/Home";
 import { LoggedStatus } from "../Context/UserContext";
+import { SetProductsList } from "../Context/UserContext";
 
 export default function RouteSwitch() {
   const userLoggedIn = LoggedStatus();
-
+  const setProducts = SetProductsList();
   return (
     <Routes>
       <Route
@@ -18,7 +19,7 @@ export default function RouteSwitch() {
           localStorage.logged ? (
             <div>
               <Nav />
-              <Home />
+              <Home setProducts={setProducts} />
             </div>
           ) : (
             <Login />

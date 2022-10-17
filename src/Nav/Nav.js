@@ -32,7 +32,7 @@ export default function Nav() {
           Hola, {localStorage.name}!
         </Title>
         <Notifications style={{ marginRight: "15px" }}>
-          <Link style={{ textDecoration: "none" }} to="/login">
+          <Link style={{ textDecoration: "none" }}>
             <Signout>Sign out</Signout>
           </Link>
         </Notifications>
