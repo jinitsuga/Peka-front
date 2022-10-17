@@ -16,14 +16,10 @@ export default function RouteSwitch() {
       <Route
         path="/"
         element={
-          localStorage.logged ? (
-            <div>
-              <Nav />
-              <Home setProducts={setProducts} />
-            </div>
-          ) : (
-            <Login />
-          )
+          <div>
+            <Nav />
+            <Home setProducts={setProducts} />
+          </div>
         }
       ></Route>
       <Route path="/register" element={<Register />}></Route>

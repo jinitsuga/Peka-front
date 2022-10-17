@@ -9,9 +9,12 @@ import { StyledLink } from "../Shared/StyledLink";
 import { ButtonWrapper } from "./ButtonWrapper";
 import { ErrorMessage } from "../Shared/ErrorMsg";
 import { UserInfo, UpdateUser, UpdateLogin } from "../Context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  const navigate = useNavigate();
 
   // Context variables
   const userInfo = UserInfo();
@@ -43,17 +46,27 @@ export default function Login() {
       credentials: "include",
     };
 
+    let responseStatus = "";
     await fetch("https://peka-api-wt2x.onrender.com/signin", reqOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        const respObj = JSON.parse(result);
-        updateUser({ name: respObj.name, email: respObj.email });
-        logUser(true);
-        localStorage.setItem("logged", true);
-        localStorage.setItem("name", respObj.name);
-        localStorage.setItem("email", respObj.email);
+      .then((response) => {
+        responseStatus = response.statusText;
+        console.log(responseStatus);
+        return response.text();
       })
-      .catch((error) => console.log("error => ", error));
+      .then((result) => {
+        if (responseStatus == "OK") {
+          const respObj = JSON.parse(result);
+          updateUser({ name: respObj.name, email: respObj.email });
+          localStorage.setItem("name", respObj.name);
+          localStorage.setItem("email", respObj.email);
+        }
+      })
+      .then(() => {
+        if (responseStatus == "OK") {
+          navigate("/");
+        }
+      })
+      .catch((error) => console.log("error => ", error.message));
   }
 
   const formData = [

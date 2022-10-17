@@ -10,6 +10,11 @@ export function Home(props) {
     props.setProducts(["lul"]);
   }, []);
   const prodos = GetProducts();
+  async function getProducts() {
+    await fetch("https://peka-api-wt2x.onrender.com/products").then((result) =>
+      JSON.parse(result)
+    );
+  }
   console.log(prodos);
   return (
     <Wrapper>
