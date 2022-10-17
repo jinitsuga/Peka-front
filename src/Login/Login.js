@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Wrapper } from "../Shared/Wrapper";
 import { Title } from "../Shared/Title";
 import Input from "../Shared/Input/Input";
+import { Link } from "react-router-dom";
 import { Button } from "../Shared/Button";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { StyledLink } from "../Shared/StyledLink";
@@ -39,14 +40,18 @@ export default function Login() {
       headers: reqHeaders,
       body: reqData,
       redirect: "follow",
+      credentials: "include",
     };
 
     await fetch("https://peka-api-wt2x.onrender.com/signin", reqOptions)
       .then((response) => response.text())
       .then((result) => {
         const respObj = JSON.parse(result);
-        updateUser({ name: respObj.user.name, email: respObj.user.email });
+        updateUser({ name: respObj.name, email: respObj.email });
         logUser(true);
+        localStorage.setItem("logged", true);
+        localStorage.setItem("name", respObj.name);
+        localStorage.setItem("email", respObj.email);
       })
       .catch((error) => console.log("error => ", error));
   }
@@ -107,14 +112,16 @@ export default function Login() {
         </div>
       </FormWrapper>
       <ButtonWrapper>
-        <Button
-          primary
-          onClick={() => {
-            handleLogin();
-          }}
-        >
-          Ingresar
-        </Button>
+        <Link style={{ textDecoration: "none" }} to="/">
+          <Button
+            primary
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            Ingresar
+          </Button>
+        </Link>
         <div
           className="login-links"
           style={{
