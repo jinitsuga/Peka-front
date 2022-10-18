@@ -66,7 +66,7 @@ export default function Register(props) {
       errorMessage:
         "Tu nombre debe tener entre 3 y 16 caracteres alfanuméricos.",
       placeholder: "Tu nombre",
-      pattern: /^[a-zA-Z0-9_-]{3,16}$/,
+      pattern: /^[a-zA-Z0-9_][a-zA-Z0-9_ ]*[a-zA-Z0-9_]{2,16}$/,
     },
     {
       name: "email",
@@ -153,7 +153,7 @@ export default function Register(props) {
       >
         Registrarse
       </Button>
-      <StyledLink to="/">Ya te registraste? Entrá!</StyledLink>
+      <StyledLink to="/login">Ya te registraste? Entrá!</StyledLink>
     </Wrapper>
   );
 }
