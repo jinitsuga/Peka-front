@@ -25,6 +25,7 @@ export default function RouteSwitch() {
       <Route path="/register" element={<Register />}></Route>
       <Route path="/passreset" element={<ResetPassword />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/search" element={<Login />}></Route>
       {/* <Route path="/home" element={<Nav />}></Route> */}
     </Routes>
   );
