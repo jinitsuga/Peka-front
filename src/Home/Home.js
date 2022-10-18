@@ -1,9 +1,10 @@
+import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { FilterInput } from "../Shared/FilterInput";
 import { Title } from "../Shared/Title";
 import { GetProducts } from "../Context/UserContext";
-import React from "react";
+import ListedProducts from "./ListedProducts";
 
 export function Home(props) {
   // React.useEffect(() => {
@@ -148,11 +149,11 @@ export function Home(props) {
   //   props.setProducts(productsList);
   // }, []);
 
-  const [searchProducts, setSearchProducts] = React.useState();
-  const [offerProducts, setOfferProducts] = React.useState();
+  const [productSearch, setProductSearch] = React.useState([]);
+  const [productOffer, setProductOffer] = React.useState();
 
-  const prodos = GetProducts();
-  console.log(prodos);
+  const products = GetProducts();
+
   // Revisit async function later when server's running
   // async function getProducts() {
   //   await fetch("https://peka-api-wt2x.onrender.com/products").then((result) =>
@@ -160,7 +161,13 @@ export function Home(props) {
   //   );
   // }
 
-  const filterProducts = (e) => {};
+  const filterProducts = (e) => {
+    const filtered = products.filter((prod) =>
+      prod.name.includes(e.currentTarget.value.toLowerCase())
+    );
+    setProductSearch(filtered);
+    console.log(filtered);
+  };
 
   return (
     <Wrapper>
@@ -169,10 +176,18 @@ export function Home(props) {
           style={{ marginBottom: "100px" }}
           label="¿Qué te gustaría ofrecer?"
           placeholder="ej: tomate, rúcula, apio..."
+          onChange={(e) => {
+            setProductSearch(e.currentTarget.value);
+            filterProducts(e);
+          }}
         ></FilterInput>
+        <ListedProducts filteredProducts={productSearch}></ListedProducts>
         <FilterInput
           label="¿Qué estás buscando?"
           placeholder="ej: lechuga, limones, menta..."
+          onChange={(e) => {
+            setProductOffer(e.currentTarget.value);
+          }}
         ></FilterInput>
       </FormWrapper>
     </Wrapper>
