@@ -149,8 +149,12 @@ export function Home(props) {
   //   props.setProducts(productsList);
   // }, []);
 
+  const [shownProducts, setShownProducts] = React.useState({
+    showOn: "",
+    products: [],
+  });
   const [productSearch, setProductSearch] = React.useState([]);
-  const [productOffer, setProductOffer] = React.useState();
+  const [productOffer, setProductOffer] = React.useState([]);
 
   const products = GetProducts();
 
@@ -161,12 +165,15 @@ export function Home(props) {
   //   );
   // }
 
-  const filterProducts = (e) => {
+  const filterProducts = (e, field) => {
     const filtered = products.filter((prod) =>
       prod.name.includes(e.currentTarget.value.toLowerCase())
     );
-    setProductSearch(filtered);
-    console.log(filtered);
+    setShownProducts((oldShown) => {
+      return { showOn: field, products: filtered };
+    });
+
+    console.log(shownProducts);
   };
 
   return (
@@ -177,18 +184,25 @@ export function Home(props) {
           label="¿Qué te gustaría ofrecer?"
           placeholder="ej: tomate, rúcula, apio..."
           onChange={(e) => {
-            setProductSearch(e.currentTarget.value);
-            filterProducts(e);
+            // setShownProducts(e.currentTarget.value);
+            filterProducts(e, "offer");
           }}
         ></FilterInput>
-        <ListedProducts filteredProducts={productSearch}></ListedProducts>
+        <ListedProducts
+          filteredProducts={shownProducts.products}
+          display={shownProducts.showOn === "offer" ? "flex" : "none"}
+        ></ListedProducts>
         <FilterInput
           label="¿Qué estás buscando?"
           placeholder="ej: lechuga, limones, menta..."
           onChange={(e) => {
-            setProductOffer(e.currentTarget.value);
+            filterProducts(e, "search");
           }}
         ></FilterInput>
+        <ListedProducts
+          filteredProducts={shownProducts.products}
+          display={shownProducts.showOn === "search" ? "flex" : "none"}
+        ></ListedProducts>
       </FormWrapper>
     </Wrapper>
   );

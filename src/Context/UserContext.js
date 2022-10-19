@@ -163,9 +163,7 @@ export function UserContextProvider({ children }) {
       {
         name: "zanahoria",
       },
-      {
-        name: "zapallito",
-      },
+
       {
         name: "zapallito",
       },
