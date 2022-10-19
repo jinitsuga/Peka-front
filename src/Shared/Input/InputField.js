@@ -15,6 +15,7 @@ const InputField = styled.input.attrs((props) => ({
   text-indent: 6px;
   margin-bottom: 2px;
   margin-top: 5px;
+  background: #d2d79f;
   &::placeholder {
     font-size: 12px;
   }

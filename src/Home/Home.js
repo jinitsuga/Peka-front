@@ -153,8 +153,14 @@ export function Home(props) {
     showOn: "",
     products: [],
   });
-  const [productSearch, setProductSearch] = React.useState([]);
-  const [productOffer, setProductOffer] = React.useState([]);
+  const [productSearch, setProductSearch] = React.useState({
+    input: "",
+    sendSearch: [],
+  });
+  const [productOffer, setProductOffer] = React.useState({
+    input: "",
+    sendOffer: [],
+  });
 
   const products = GetProducts();
 
@@ -185,10 +191,15 @@ export function Home(props) {
           placeholder="ej: tomate, rúcula, apio..."
           onChange={(e) => {
             // setShownProducts(e.currentTarget.value);
+            setProductOffer((oldOffer) => {
+              return { ...oldOffer, input: e.target.value };
+            });
             filterProducts(e, "offer");
+            console.log(productOffer);
           }}
         ></FilterInput>
         <ListedProducts
+          inputField={productOffer.input}
           filteredProducts={shownProducts.products}
           display={shownProducts.showOn === "offer" ? "flex" : "none"}
         ></ListedProducts>
@@ -197,9 +208,13 @@ export function Home(props) {
           placeholder="ej: lechuga, limones, menta..."
           onChange={(e) => {
             filterProducts(e, "search");
+            setProductSearch((oldSearch) => {
+              return { ...oldSearch, input: e.target.value };
+            });
           }}
         ></FilterInput>
         <ListedProducts
+          inputField={productSearch.input}
           filteredProducts={shownProducts.products}
           display={shownProducts.showOn === "search" ? "flex" : "none"}
         ></ListedProducts>

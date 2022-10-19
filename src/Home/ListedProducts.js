@@ -9,11 +9,17 @@ export default function ListedProducts(props) {
   return (
     <ul
       style={{
-        display: props.display,
+        display: props.inputField !== "" ? props.display : "none",
         flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
         listStyle: "none",
         paddingLeft: 0,
+        padding: "5px",
         marginTop: "-25px",
+        background: "#D2D79F",
+        width: "100px",
+        borderRadius: "5px",
       }}
       className="listed-products"
     >
