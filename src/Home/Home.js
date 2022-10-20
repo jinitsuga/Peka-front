@@ -6,7 +6,8 @@ import { Title } from "../Shared/Title";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "./ListedProducts";
 import { Badge } from "./ItemBadge";
-import { BadgesWrapper } from "../Shared/BadgeWrapper";
+import { BadgesWrapper, DetailsWrapper } from "../Shared/BadgeWrapper";
+import { SecondaryButton } from "../Shared/Button";
 
 export function Home(props) {
   // React.useEffect(() => {
@@ -176,7 +177,7 @@ export function Home(props) {
   // }
 
   const offerItemBadges =
-    productOffer.sendItems.length &&
+    productOffer.sendItems.length > 0 &&
     productOffer.sendItems.map((item, index) => {
       return <Badge key={index}>{item}</Badge>;
     });
@@ -189,7 +190,6 @@ export function Home(props) {
       return { showOn: field, products: filtered };
     });
   };
-  console.log(productSearch);
 
   // const addOfferItem = (e) => {
   //   setProductOffer((oldOffer) => {
@@ -225,7 +225,10 @@ export function Home(props) {
             filterProducts(e, "offer");
           }}
         ></FilterInput>
-        <BadgesWrapper>{offerItemBadges}</BadgesWrapper>
+        <DetailsWrapper>
+          <BadgesWrapper>{offerItemBadges}</BadgesWrapper>
+          <SecondaryButton>Ofrecer</SecondaryButton>
+        </DetailsWrapper>
         <ListedProducts
           addItem={addItem}
           inputField={productOffer.input}

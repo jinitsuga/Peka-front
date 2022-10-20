@@ -9,7 +9,7 @@ export const Badge = styled.div`
   font-weight: 500;
   padding: 6px;
   border-radius: 5px;
-  margin: 4px;
+  margin: 5px;
   background: #483838;
   color: #d2d79f;
 `;

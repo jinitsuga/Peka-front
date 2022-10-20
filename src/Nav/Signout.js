@@ -31,7 +31,7 @@ export default function Signout() {
         handleSignout();
       }}
     >
-      Sign out
+      Cerrar sesión
     </NavButton>
   );
 }

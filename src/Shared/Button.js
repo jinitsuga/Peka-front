@@ -30,6 +30,7 @@ const SecondaryButton = styled(Button)`
   font-size: 14px;
   width: 90px;
   height: 40px;
+  margin-bottom: 0px;
 `;
 
 const NavButton = styled(SecondaryButton)`
