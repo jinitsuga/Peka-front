@@ -5,6 +5,7 @@ import { FilterInput } from "../Shared/FilterInput";
 import { Title } from "../Shared/Title";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "./ListedProducts";
+import { Badge } from "./ItemBadge";
 
 export function Home(props) {
   // React.useEffect(() => {
@@ -156,10 +157,12 @@ export function Home(props) {
   const [productSearch, setProductSearch] = React.useState({
     input: "",
     sendItems: [],
+    number: 0,
   });
   const [productOffer, setProductOffer] = React.useState({
     input: "",
     sendItems: [],
+    number: 0,
   });
 
   const products = GetProducts();
@@ -171,6 +174,12 @@ export function Home(props) {
   //   );
   // }
 
+  const offerItemBadges =
+    productOffer.sendItems.length &&
+    productOffer.sendItems.map((item, index) => {
+      return <Badge key={index}>{item}</Badge>;
+    });
+  // const searchItemBadges
   const filterProducts = (e, field) => {
     const filtered = products.filter((prod) =>
       prod.name.includes(e.currentTarget.value.toLowerCase())
@@ -213,10 +222,9 @@ export function Home(props) {
               return { ...oldOffer, input: e.target.value };
             });
             filterProducts(e, "offer");
-            console.log("offer", productOffer);
-            console.log("search", productSearch);
           }}
         ></FilterInput>
+        <div className="badges-container">{offerItemBadges}</div>
         <ListedProducts
           addItem={addItem}
           inputField={productOffer.input}

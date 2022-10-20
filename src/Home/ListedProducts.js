@@ -20,7 +20,7 @@ export default function ListedProducts(props) {
         listStyle: "none",
         paddingLeft: 0,
         padding: "5px",
-        marginTop: "-25px",
+        marginTop: "5px",
         background: "#D2D79F",
         width: "100px",
         borderRadius: "5px",
