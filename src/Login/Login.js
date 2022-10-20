@@ -54,15 +54,16 @@ export default function Login() {
         return response.text();
       })
       .then((result) => {
-        if (responseStatus == "OK") {
+        if (responseStatus === "OK") {
           const respObj = JSON.parse(result);
           updateUser({ name: respObj.name, email: respObj.email });
           localStorage.setItem("name", respObj.name);
           localStorage.setItem("email", respObj.email);
+          localStorage.setItem("loggedIn", true);
         }
       })
       .then(() => {
-        if (responseStatus == "OK") {
+        if (responseStatus === "OK") {
           navigate("/");
         }
       })

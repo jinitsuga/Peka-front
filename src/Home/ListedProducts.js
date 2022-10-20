@@ -3,7 +3,11 @@ import { ListItem } from "../Shared/ListItem";
 
 export default function ListedProducts(props) {
   const products = props.filteredProducts.map((prod, index) => {
-    return <ListItem key={index}>{prod.name}</ListItem>;
+    return (
+      <ListItem onClick={props.addItem} key={index}>
+        {prod.name}
+      </ListItem>
+    );
   });
 
   return (

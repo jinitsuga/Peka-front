@@ -17,5 +17,6 @@ export const ListItem = styled.li`
   height: 22px;
   &:hover {
     cursor: pointer;
+    color: #42855b;
   }
 `;

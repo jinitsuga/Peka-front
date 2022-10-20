@@ -155,11 +155,11 @@ export function Home(props) {
   });
   const [productSearch, setProductSearch] = React.useState({
     input: "",
-    sendSearch: [],
+    sendItems: [],
   });
   const [productOffer, setProductOffer] = React.useState({
     input: "",
-    sendOffer: [],
+    sendItems: [],
   });
 
   const products = GetProducts();
@@ -178,10 +178,28 @@ export function Home(props) {
     setShownProducts((oldShown) => {
       return { showOn: field, products: filtered };
     });
-
-    console.log(shownProducts);
   };
+  console.log(productSearch);
 
+  // const addOfferItem = (e) => {
+  //   setProductOffer((oldOffer) => {
+  //     return {
+  //       ...oldOffer,
+  //       sendItems: [...oldOffer.sendItems, e.target.textContent],
+  //     };
+  //   });
+  // };
+
+  const addItem = (e) => {
+    const addFunc =
+      shownProducts.showOn === "offer" ? setProductOffer : setProductSearch;
+    addFunc((oldData) => {
+      return {
+        ...oldData,
+        sendItems: [...oldData.sendItems, e.target.textContent],
+      };
+    });
+  };
   return (
     <Wrapper>
       <FormWrapper>
@@ -195,10 +213,12 @@ export function Home(props) {
               return { ...oldOffer, input: e.target.value };
             });
             filterProducts(e, "offer");
-            console.log(productOffer);
+            console.log("offer", productOffer);
+            console.log("search", productSearch);
           }}
         ></FilterInput>
         <ListedProducts
+          addItem={addItem}
           inputField={productOffer.input}
           filteredProducts={shownProducts.products}
           display={shownProducts.showOn === "offer" ? "flex" : "none"}
@@ -214,6 +234,7 @@ export function Home(props) {
           }}
         ></FilterInput>
         <ListedProducts
+          addItem={addItem}
           inputField={productSearch.input}
           filteredProducts={shownProducts.products}
           display={shownProducts.showOn === "search" ? "flex" : "none"}
