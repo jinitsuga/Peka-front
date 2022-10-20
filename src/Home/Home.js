@@ -6,6 +6,7 @@ import { Title } from "../Shared/Title";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "./ListedProducts";
 import { Badge } from "./ItemBadge";
+import { BadgesWrapper } from "../Shared/BadgeWrapper";
 
 export function Home(props) {
   // React.useEffect(() => {
@@ -224,7 +225,7 @@ export function Home(props) {
             filterProducts(e, "offer");
           }}
         ></FilterInput>
-        <div className="badges-container">{offerItemBadges}</div>
+        <BadgesWrapper>{offerItemBadges}</BadgesWrapper>
         <ListedProducts
           addItem={addItem}
           inputField={productOffer.input}
