@@ -169,19 +169,18 @@ export function Home(props) {
 
   const products = GetProducts();
 
-  // Revisit async function later when server's running
-  // async function getProducts() {
-  //   await fetch("https://peka-api-wt2x.onrender.com/products").then((result) =>
-  //     JSON.parse(result)
-  //   );
-  // }
-
   const offerItemBadges =
     productOffer.sendItems.length > 0 &&
     productOffer.sendItems.map((item, index) => {
       return <Badge key={index}>{item}</Badge>;
     });
-  // const searchItemBadges
+
+  const searchItemBadges =
+    productSearch.sendItems.length > 0 &&
+    productSearch.sendItems.map((item, index) => {
+      return <Badge key={index}>{item}</Badge>;
+    });
+
   const filterProducts = (e, field) => {
     const filtered = products.filter((prod) =>
       prod.name.includes(e.currentTarget.value.toLowerCase())
@@ -191,19 +190,11 @@ export function Home(props) {
     });
   };
 
-  // const addOfferItem = (e) => {
-  //   setProductOffer((oldOffer) => {
-  //     return {
-  //       ...oldOffer,
-  //       sendItems: [...oldOffer.sendItems, e.target.textContent],
-  //     };
-  //   });
-  // };
-
   const addItem = (e) => {
     const addFunc =
       shownProducts.showOn === "offer" ? setProductOffer : setProductSearch;
     addFunc((oldData) => {
+      if (oldData.sendItems.length >= 5) return oldData;
       return {
         ...oldData,
         sendItems: [...oldData.sendItems, e.target.textContent],
@@ -227,7 +218,13 @@ export function Home(props) {
         ></FilterInput>
         <DetailsWrapper>
           <BadgesWrapper>{offerItemBadges}</BadgesWrapper>
-          <SecondaryButton>Ofrecer</SecondaryButton>
+          <SecondaryButton
+            style={{
+              display: productOffer.sendItems.length > 0 ? "flex" : "none",
+            }}
+          >
+            Ofrecer
+          </SecondaryButton>
         </DetailsWrapper>
         <ListedProducts
           addItem={addItem}
@@ -235,6 +232,8 @@ export function Home(props) {
           filteredProducts={shownProducts.products}
           display={shownProducts.showOn === "offer" ? "flex" : "none"}
         ></ListedProducts>
+
+        {/* SEARCHING  */}
         <FilterInput
           label="¿Qué estás buscando?"
           placeholder="ej: lechuga, limones, menta..."
@@ -245,6 +244,16 @@ export function Home(props) {
             });
           }}
         ></FilterInput>
+        <DetailsWrapper>
+          <BadgesWrapper> {searchItemBadges} </BadgesWrapper>
+          <SecondaryButton
+            style={{
+              display: productSearch.sendItems.length > 0 ? "flex" : "none",
+            }}
+          >
+            Buscar
+          </SecondaryButton>
+        </DetailsWrapper>
         <ListedProducts
           addItem={addItem}
           inputField={productSearch.input}
