@@ -13,7 +13,6 @@ export default function Nav() {
   const userLoggedIn = LoggedStatus();
 
   const userData = UserInfo();
-  console.log(userData);
 
   return (
     <Header style={{ borderBottom: "solid 4px #483838 " }}>
