@@ -167,7 +167,7 @@ export function Home(props) {
     number: 0,
   });
 
-  const products = GetProducts();
+  const allProducts = GetProducts();
 
   const offerItemBadges =
     productOffer.sendItems.length > 0 &&
@@ -182,7 +182,7 @@ export function Home(props) {
     });
 
   const filterProducts = (e, field) => {
-    const filtered = products.filter((prod) =>
+    const filtered = allProducts.filter((prod) =>
       prod.name.includes(e.currentTarget.value.toLowerCase())
     );
     setShownProducts((oldShown) => {
@@ -209,7 +209,6 @@ export function Home(props) {
           label="¿Qué te gustaría ofrecer?"
           placeholder="ej: tomate, rúcula, apio..."
           onChange={(e) => {
-            // setShownProducts(e.currentTarget.value);
             setProductOffer((oldOffer) => {
               return { ...oldOffer, input: e.target.value };
             });
