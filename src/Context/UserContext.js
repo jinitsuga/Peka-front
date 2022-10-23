@@ -33,143 +33,16 @@ export function SetProductsList() {
 
 export function UserContextProvider({ children }) {
   React.useEffect(() => {
-    const productsList = [
-      {
-        name: "acelga",
-      },
-      {
-        name: "ajo",
-      },
-      {
-        name: "albhaca",
-      },
-      {
-        name: "apio",
-      },
-      {
-        name: "arándano",
-      },
-      {
-        name: "arveja",
-      },
-      {
-        name: "berenjena",
-      },
-      {
-        name: "boniato",
-      },
-      {
-        name: "brócoli",
-      },
-      {
-        name: "calabacín",
-      },
-      {
-        name: "cebolla",
-      },
-      {
-        name: "chaucha",
-      },
-      {
-        name: "choclo",
-      },
-      {
-        name: "ciruela",
-      },
-      {
-        name: "coliflor",
-      },
-      {
-        name: "durazno",
-      },
-      {
-        name: "espinaca",
-      },
-      {
-        name: "frutilla",
-      },
-      {
-        name: "higo",
-      },
-      {
-        name: "kiwi",
-      },
-      {
-        name: "lechuga",
-      },
-      {
-        name: "limón",
-      },
-      {
-        name: "mandarina",
-      },
-      {
-        name: "manzana",
-      },
-      {
-        name: "melón",
-      },
-      {
-        name: "membrillo",
-      },
-      {
-        name: "morrón",
-      },
-      {
-        name: "nabo",
-      },
-      {
-        name: "naranja",
-      },
-      {
-        name: "papa",
-      },
-      {
-        name: "pelón",
-      },
-      {
-        name: "pepino",
-      },
-      {
-        name: "pera",
-      },
-      {
-        name: "perejil",
-      },
-      {
-        name: "pomelo",
-      },
-      {
-        name: "puerro",
-      },
-      {
-        name: "rabanito",
-      },
-      {
-        name: "remolacha",
-      },
-      {
-        name: "repollo",
-      },
-      {
-        name: "sandía",
-      },
-      {
-        name: "tomate",
-      },
-      {
-        name: "uva",
-      },
-      {
-        name: "zanahoria",
-      },
+    const reqOptions = { method: "GET", redirect: "follow" };
 
-      {
-        name: "zapallito",
-      },
-    ];
+    fetch("https://peka-api-wt2x.onrender.com/products", reqOptions)
+      // .then((response) => response.text())
+      .then((result) => result.text())
+      .then((result) => JSON.parse(result))
+      .then((products) => setProducts(products))
+      .catch((err) => console.log("error", err));
 
-    setProducts(productsList);
+    // setProducts(productsList);
   }, []);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});

@@ -168,6 +168,9 @@ export function Home(props) {
   });
 
   const allProducts = GetProducts();
+  // const productNames = JSON.parse(allProducts);
+  // const productNames = allProducts.map((prod) => prod.name);
+  console.log(allProducts);
 
   const offerItemBadges =
     productOffer.sendItems.length > 0 &&
