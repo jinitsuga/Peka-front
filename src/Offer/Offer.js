@@ -10,13 +10,14 @@ import { Badge } from "../Home/ItemBadge";
 import ListedProducts from "../Shared/ListedProducts";
 
 export default function Offer() {
-  const [offerProducts, setOfferProducts] = React.useState({
+  const [offerProduct, setOfferProduct] = React.useState({
     type: "",
     quantity: "",
     unit: "",
     productId: "",
     description: "",
     pictures: "",
+    badges: [],
   });
   const [offerInput, setOfferInput] = React.useState("");
 
@@ -27,11 +28,25 @@ export default function Offer() {
   const productNames = allProducts.map((prod) => prod.name);
 
   const filterProducts = (e) => {
-    const filtered = productNames.filter((prod) =>
+    const filtered = allProducts.filter((prod) =>
       prod.name.includes(e.currentTarget.value.toLowerCase())
     );
     setShownProducts(filtered);
   };
+
+  const selectItem = (e) => {
+    setOfferProduct((oldProduct) => {
+      // if (oldProduct.badges.length >= 1) return oldProduct;
+      return {
+        ...oldProduct,
+        badges: [e.target.textContent],
+      };
+    });
+  };
+
+  const offerBadges =
+    offerProduct.badges.length > 0 &&
+    offerProduct.badges.map((item, index) => <Badge key={index}>{item}</Badge>);
 
   return (
     <Wrapper>
@@ -43,9 +58,19 @@ export default function Offer() {
           name="make-offer"
           onChange={(e) => {
             console.log(e.target.value);
+            setOfferInput(e.target.value);
+            filterProducts(e);
           }}
         ></FilterInput>
-        {/* <ListedProducts></ListedProducts> */}
+        <DetailsWrapper>
+          <BadgesWrapper>{offerBadges}</BadgesWrapper>
+        </DetailsWrapper>
+        <ListedProducts
+          addItem={selectItem}
+          inputField={offerInput}
+          filteredProducts={shownProducts}
+          display="flex"
+        ></ListedProducts>
       </FormWrapper>
     </Wrapper>
   );
