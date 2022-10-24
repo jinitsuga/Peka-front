@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem } from "../Shared/ListItem";
+import { ListItem } from "./ListItem";
 
 export default function ListedProducts(props) {
   const products = props.filteredProducts.map((prod, index) => {

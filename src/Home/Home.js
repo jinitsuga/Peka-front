@@ -4,7 +4,7 @@ import { FormWrapper } from "../Shared/FormWrapper";
 import { FilterInput } from "../Shared/FilterInput";
 import { Title } from "../Shared/Title";
 import { GetProducts } from "../Context/UserContext";
-import ListedProducts from "./ListedProducts";
+import ListedProducts from "../Shared/ListedProducts";
 import { Badge } from "./ItemBadge";
 import { BadgesWrapper, DetailsWrapper } from "../Shared/BadgeWrapper";
 import { SecondaryButton } from "../Shared/Button";
@@ -168,9 +168,8 @@ export function Home(props) {
   });
 
   const allProducts = GetProducts();
-  // const productNames = JSON.parse(allProducts);
-  // const productNames = allProducts.map((prod) => prod.name);
-  console.log(allProducts);
+
+  const productNames = allProducts.map((prod) => prod.name);
 
   const offerItemBadges =
     productOffer.sendItems.length > 0 &&

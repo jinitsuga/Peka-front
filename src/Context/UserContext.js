@@ -44,6 +44,7 @@ export function UserContextProvider({ children }) {
 
     // setProducts(productsList);
   }, []);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [products, setProducts] = useState([]);
