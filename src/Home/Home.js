@@ -184,9 +184,12 @@ export function Home(props) {
     });
 
   const filterProducts = (e, field) => {
-    const filtered = allProducts.filter((prod) =>
-      prod.name.includes(e.currentTarget.value.toLowerCase())
-    );
+    const filtered = allProducts.filter((prod) => {
+      const prodName = prod.name
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "");
+      return prodName.includes(e.currentTarget.value.toLowerCase());
+    });
     setShownProducts((oldShown) => {
       return { showOn: field, products: filtered };
     });
@@ -231,7 +234,6 @@ export function Home(props) {
           addItem={addItem}
           inputField={productOffer.input}
           filteredProducts={shownProducts.products}
-          display={shownProducts.showOn === "offer" ? "flex" : "none"}
         ></ListedProducts>
 
         {/* SEARCHING  */}
@@ -259,7 +261,6 @@ export function Home(props) {
           addItem={addItem}
           inputField={productSearch.input}
           filteredProducts={shownProducts.products}
-          display={shownProducts.showOn === "search" ? "flex" : "none"}
         ></ListedProducts>
       </FormWrapper>
     </Wrapper>

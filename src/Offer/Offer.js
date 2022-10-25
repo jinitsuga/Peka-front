@@ -29,9 +29,12 @@ export default function Offer() {
   const productNames = allProducts.map((prod) => prod.name);
 
   const filterProducts = (e) => {
-    const filtered = allProducts.filter((prod) =>
-      prod.name.includes(e.currentTarget.value.toLowerCase())
-    );
+    const filtered = allProducts.filter((prod) => {
+      const prodName = prod.name
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "");
+      return prodName.includes(e.currentTarget.value.toLowerCase());
+    });
     setShownProducts(filtered);
   };
 
@@ -66,13 +69,6 @@ export default function Offer() {
         ></FilterInput>
         <DetailsWrapper>
           <BadgesWrapper>{offerBadges}</BadgesWrapper>
-          <SecondaryButton
-            style={{
-              display: offerProduct.badges.length > 0 ? "flex" : "none",
-            }}
-          >
-            Ofrecer
-          </SecondaryButton>
         </DetailsWrapper>
         <ListedProducts
           addItem={selectItem}
@@ -80,7 +76,19 @@ export default function Offer() {
           filteredProducts={shownProducts}
           display="flex"
         ></ListedProducts>
-        <Select options={["Kilos", "Gramos", "Atados"]}></Select>
+        <DetailsWrapper style={{ width: "100%" }}>
+          <Select
+            label="Cantidad:"
+            options={["Kilos", "Gramos", "Atados"]}
+          ></Select>
+        </DetailsWrapper>
+        <SecondaryButton
+          style={{
+            display: offerProduct.badges.length > 0 ? "flex" : "none",
+          }}
+        >
+          Ofrecer
+        </SecondaryButton>
       </FormWrapper>
     </Wrapper>
   );

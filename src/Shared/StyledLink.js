@@ -24,7 +24,6 @@ const NavLink = styled(StyledLink)`
     color: #42855b;
     border-bottom: solid 2px;
     border-radius: 0;
-    transform: scale(1.04);
   }
 `;
 export { StyledLink, NavLink };

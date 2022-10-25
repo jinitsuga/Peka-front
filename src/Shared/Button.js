@@ -42,4 +42,14 @@ const NavButton = styled(SecondaryButton)`
     transform: scale(1.07);
   }
 `;
-export { Button, SecondaryButton, NavButton };
+
+const CloseButton = styled(SecondaryButton)`
+&:hover {
+  color: #d2d79f;
+  background: #42855b;
+  transform: scale(1.07);
+  cursor: pointer;
+
+
+`;
+export { Button, SecondaryButton, NavButton, CloseButton };

@@ -7,4 +7,5 @@ export const SelectOption = styled.option`
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  background: #d2d79f;
 `;
