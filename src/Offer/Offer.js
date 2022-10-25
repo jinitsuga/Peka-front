@@ -7,6 +7,7 @@ import { FilterInput } from "../Shared/FilterInput";
 import { GetProducts } from "../Context/UserContext";
 import { DetailsWrapper, BadgesWrapper } from "../Shared/BadgeWrapper";
 import { Badge } from "../Home/ItemBadge";
+import Select from "../Shared/Select/Select";
 import ListedProducts from "../Shared/ListedProducts";
 
 export default function Offer() {
@@ -36,13 +37,14 @@ export default function Offer() {
 
   const selectItem = (e) => {
     setOfferProduct((oldProduct) => {
-      // if (oldProduct.badges.length >= 1) return oldProduct;
       return {
         ...oldProduct,
         badges: [e.target.textContent],
       };
     });
   };
+
+  // Esconder la lista de productos con botón (tal vez dedicarle un state para eso)
 
   const offerBadges =
     offerProduct.badges.length > 0 &&
@@ -64,6 +66,13 @@ export default function Offer() {
         ></FilterInput>
         <DetailsWrapper>
           <BadgesWrapper>{offerBadges}</BadgesWrapper>
+          <SecondaryButton
+            style={{
+              display: offerProduct.badges.length > 0 ? "flex" : "none",
+            }}
+          >
+            Ofrecer
+          </SecondaryButton>
         </DetailsWrapper>
         <ListedProducts
           addItem={selectItem}
@@ -71,11 +80,8 @@ export default function Offer() {
           filteredProducts={shownProducts}
           display="flex"
         ></ListedProducts>
+        <Select options={["Kilos", "Gramos", "Atados"]}></Select>
       </FormWrapper>
     </Wrapper>
   );
 }
-
-// Make offer requests
-// These offers go on the users client info
-// It can receive some already selected products (by the user) from the Home component
