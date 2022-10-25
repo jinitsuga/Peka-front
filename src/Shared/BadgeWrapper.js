@@ -15,7 +15,6 @@ export const BadgesWrapper = styled.div`
 
 export const DetailsWrapper = styled(BadgesWrapper)`
   display: flex;
-  flex-direction: column;
   max-width: 300px;
   height: auto;
   flex-wrap: nowrap;

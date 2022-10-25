@@ -2,7 +2,8 @@ import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { SecondaryButton } from "../Shared/Button";
-import { Title } from "../Shared/Title";
+import { Title, SmallerTitle } from "../Shared/Title";
+import { InputQty } from "../Shared/Input/InputField";
 import { FilterInput } from "../Shared/FilterInput";
 import { GetProducts } from "../Context/UserContext";
 import { DetailsWrapper, BadgesWrapper } from "../Shared/BadgeWrapper";
@@ -76,11 +77,10 @@ export default function Offer() {
           filteredProducts={shownProducts}
           display="flex"
         ></ListedProducts>
+        <SmallerTitle style={{ marginTop: "5px" }}>Cantidad:</SmallerTitle>
         <DetailsWrapper style={{ width: "100%" }}>
-          <Select
-            label="Cantidad:"
-            options={["Kilos", "Gramos", "Atados"]}
-          ></Select>
+          <InputQty name="quantity" min="0" type="number"></InputQty>
+          <Select options={["Kilos", "Gramos", "Atados"]}></Select>
         </DetailsWrapper>
         <SecondaryButton
           style={{

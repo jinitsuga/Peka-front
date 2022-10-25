@@ -11,4 +11,5 @@ export const StyledSelect = styled.select`
   background: #d2d79f;
   border: none;
   border-radius: 4px;
+  height: 30px;
 `;

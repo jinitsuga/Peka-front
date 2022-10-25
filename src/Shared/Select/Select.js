@@ -8,10 +8,7 @@ export default function Select(props) {
     <SelectOption key={index}>{option}</SelectOption>
   ));
   return (
-    <Label
-      style={{ marginBottom: "15px", alignSelf: "flex-start" }}
-      htmlFor="unit"
-    >
+    <Label style={{ margin: "5px", alignSelf: "flex-start" }} htmlFor="unit">
       {" "}
       {props.label}
       <StyledSelect>{selectOptions}</StyledSelect>

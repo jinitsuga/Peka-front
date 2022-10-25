@@ -25,5 +25,10 @@ const InputField = styled.input.attrs((props) => ({
     outline-width: 2.5px;
   }
 `;
+const InputQty = styled(InputField)`
+  width: 75px;
+  height: 30px;
+  margin: 5px;
+`;
 
-export { InputField };
+export { InputField, InputQty };

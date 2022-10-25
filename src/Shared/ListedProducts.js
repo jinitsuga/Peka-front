@@ -40,7 +40,8 @@ export default function ListedProducts(props) {
           padding: "5px",
           marginTop: "5px",
           background: "#D2D79F",
-          width: "100px",
+          maxWidth: "200px",
+          flexWrap: "wrap",
           borderRadius: "5px",
         }}
         className="listed-products"
