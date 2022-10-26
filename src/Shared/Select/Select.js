@@ -11,7 +11,9 @@ export default function Select(props) {
     <Label style={{ margin: "5px", alignSelf: "flex-start" }} htmlFor="unit">
       {" "}
       {props.label}
-      <StyledSelect>{selectOptions}</StyledSelect>
+      <StyledSelect name={props.name} onChange={props.onChange}>
+        {selectOptions}
+      </StyledSelect>
     </Label>
   );
 }

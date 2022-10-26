@@ -32,24 +32,36 @@ export default function Offer() {
 
   const filterProducts = (e) => {
     const filtered = allProducts.filter((prod) => {
-      const prodName = prod.name
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "");
-      return prodName.includes(e.currentTarget.value.toLowerCase());
+      const produ = {
+        name: prod.name.normalize("NFD").replace(/\p{Diacritic}/gu, ""),
+        id: prod.id,
+      };
+      return produ.name.includes(e.currentTarget.value.toLowerCase());
     });
     setShownProducts(filtered);
+    console.log(filtered);
   };
 
   const selectItem = (e) => {
     setOfferProduct((oldProduct) => {
       return {
         ...oldProduct,
+        productId: e.target.id,
         badges: [e.target.textContent],
       };
     });
   };
-
-  // Esconder la lista de productos con botón (tal vez dedicarle un state para eso)
+  const handleQty = (e) => {
+    setOfferProduct((oldProduct) => {
+      return { ...oldProduct, [e.target.name]: e.target.value };
+    });
+  };
+  const handleRadio = (e) => {
+    setOfferProduct((oldProduct) => {
+      return { ...oldProduct, type: e.target.value };
+    });
+    console.log(offerProduct);
+  };
 
   const offerBadges =
     offerProduct.badges.length > 0 &&
@@ -80,13 +92,49 @@ export default function Offer() {
         ></ListedProducts>
         <SmallerTitle style={{ marginTop: "5px" }}>Cantidad:</SmallerTitle>
         <DetailsWrapper style={{ width: "100%" }}>
-          <InputQty name="quantity" min="0" type="number"></InputQty>
+          <InputQty
+            onChange={(e) => {
+              handleQty(e);
+            }}
+            name="quantity"
+            min="0"
+            type="number"
+          ></InputQty>
           <Select
+            onChange={(e) => {
+              handleQty(e);
+            }}
+            name="unit"
             options={["--Elige unidad--", "Kilos", "Gramos", "Atados"]}
           ></Select>
         </DetailsWrapper>
-        <RadioBtn name="plantin-semilla" label="Plantín"></RadioBtn>
-        <RadioBtn name="plantin-semilla" label="Semilla"></RadioBtn>
+        <RadioBtn
+          value="producto"
+          onChange={(e) => {
+            handleRadio(e);
+          }}
+          name="plantin-semilla"
+          label="Producto"
+          checked={offerProduct.type === "producto"}
+        ></RadioBtn>
+        <RadioBtn
+          value="plantin"
+          onChange={(e) => {
+            handleRadio(e);
+          }}
+          name="plantin-semilla"
+          label="Plantín"
+          checked={offerProduct.type === "plantin"}
+        ></RadioBtn>
+        <RadioBtn
+          value="semilla"
+          name="plantin-semilla"
+          label="Semilla"
+          onChange={(e) => {
+            handleRadio(e);
+          }}
+          checked={offerProduct.type === "semilla"}
+        ></RadioBtn>
         <SecondaryButton
           style={{
             display: offerProduct.badges.length > 0 ? "flex" : "none",

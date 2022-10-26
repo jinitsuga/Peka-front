@@ -13,7 +13,7 @@ export default function ListedProducts(props) {
 
   const products = props.filteredProducts.map((prod, index) => {
     return (
-      <ListItem onClick={props.addItem} key={index}>
+      <ListItem id={prod.id} onClick={props.addItem} key={prod.id}>
         {prod.name}
       </ListItem>
     );

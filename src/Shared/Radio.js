@@ -13,7 +13,13 @@ export default function RadioBtn(props) {
         alignSelf: "flex-start",
       }}
     >
-      <InputRadio name={props.name} type="radio"></InputRadio>
+      <InputRadio
+        value={props.value}
+        name={props.name}
+        type="radio"
+        onChange={props.onChange}
+        checked={props.checked}
+      ></InputRadio>
       <Label style={{ fontSize: "15px" }}>{props.label}</Label>
     </div>
   );
