@@ -3,13 +3,14 @@ import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { SecondaryButton } from "../Shared/Button";
 import { Title, SmallerTitle } from "../Shared/Title";
-import { InputQty } from "../Shared/Input/InputField";
+import { InputQty } from "../Shared/InputField";
 import { FilterInput } from "../Shared/FilterInput";
 import { GetProducts } from "../Context/UserContext";
 import { DetailsWrapper, BadgesWrapper } from "../Shared/BadgeWrapper";
 import { Badge } from "../Home/ItemBadge";
 import Select from "../Shared/Select/Select";
 import ListedProducts from "../Shared/ListedProducts";
+import RadioBtn from "../Shared/Radio";
 
 export default function Offer() {
   const [offerProduct, setOfferProduct] = React.useState({
@@ -80,11 +81,16 @@ export default function Offer() {
         <SmallerTitle style={{ marginTop: "5px" }}>Cantidad:</SmallerTitle>
         <DetailsWrapper style={{ width: "100%" }}>
           <InputQty name="quantity" min="0" type="number"></InputQty>
-          <Select options={["Kilos", "Gramos", "Atados"]}></Select>
+          <Select
+            options={["--Elige unidad--", "Kilos", "Gramos", "Atados"]}
+          ></Select>
         </DetailsWrapper>
+        <RadioBtn name="plantin-semilla" label="Plantín"></RadioBtn>
+        <RadioBtn name="plantin-semilla" label="Semilla"></RadioBtn>
         <SecondaryButton
           style={{
             display: offerProduct.badges.length > 0 ? "flex" : "none",
+            marginTop: "20px",
           }}
         >
           Ofrecer

@@ -31,4 +31,12 @@ const InputQty = styled(InputField)`
   margin: 5px;
 `;
 
-export { InputField, InputQty };
+const InputRadio = styled(InputQty).attrs((props) => ({
+  name: props.name,
+  type: "radio",
+}))`
+  width: 50px;
+  height: 30px;
+`;
+
+export { InputField, InputQty, InputRadio };
