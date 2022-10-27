@@ -20,7 +20,7 @@ export default function Offer() {
     unit: "",
     productId: "",
     description: "",
-    pictures: "",
+    pictures: "asd",
     badges: [],
   });
   const [offerInput, setOfferInput] = React.useState("");
@@ -63,6 +63,33 @@ export default function Offer() {
     });
     console.log(offerProduct);
   };
+  async function sendOffer() {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const reqData = JSON.stringify({
+      quantity: Number(offerProduct.quantity),
+      quantityUnit: offerProduct.unit,
+      type: offerProduct.type,
+      productId: Number(offerProduct.productId),
+      description: offerProduct.description,
+      pictures: offerProduct.pictures,
+    });
+
+    console.log(reqData);
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: reqData,
+      redirect: "follow",
+      credentials: "include",
+    };
+
+    await fetch("https://peka-api-wt2x.onrender.com/offers", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }
 
   const offerBadges =
     offerProduct.badges.length > 0 &&
@@ -91,7 +118,9 @@ export default function Offer() {
           filteredProducts={shownProducts}
           display="flex"
         ></ListedProducts>
-        <SmallerTitle style={{ marginTop: "5px" }}>Cantidad:</SmallerTitle>
+        <SmallerTitle style={{ marginTop: "5px", marginBottom: "5px" }}>
+          Cantidad:
+        </SmallerTitle>
         <DetailsWrapper style={{ width: "100%" }}>
           <InputQty
             onChange={(e) => {
@@ -116,7 +145,9 @@ export default function Offer() {
           ></Select>
         </DetailsWrapper>
         <DetailsWrapper style={{ flexDirection: "column" }}>
-          <SmallerTitle>Tipo:</SmallerTitle>
+          <SmallerTitle style={{ marginTop: "20px", marginBottom: "5px" }}>
+            Tipo:
+          </SmallerTitle>
           <RadioBtn
             value="producto"
             onChange={(e) => {
@@ -149,6 +180,7 @@ export default function Offer() {
           Incluye una breve descripción:
         </SmallerTitle>
         <TextArea
+          spellCheck="false"
           name="description"
           onChange={(e) => {
             handleQty(e);
@@ -157,6 +189,9 @@ export default function Offer() {
         ></TextArea>
 
         <SecondaryButton
+          onClick={() => {
+            sendOffer();
+          }}
           style={{
             display: offerProduct.badges.length > 0 ? "flex" : "none",
             marginTop: "20px",

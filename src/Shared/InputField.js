@@ -37,6 +37,7 @@ const InputRadio = styled(InputQty).attrs((props) => ({
 }))`
   width: 50px;
   height: 30px;
+  accent-color: #42855b;
 `;
 
 export { InputField, InputQty, InputRadio };
