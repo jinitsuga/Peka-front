@@ -11,6 +11,7 @@ import { Badge } from "../Home/ItemBadge";
 import Select from "../Shared/Select/Select";
 import ListedProducts from "../Shared/ListedProducts";
 import RadioBtn from "../Shared/Radio";
+import { TextArea } from "../Shared/TextArea";
 
 export default function Offer() {
   const [offerProduct, setOfferProduct] = React.useState({
@@ -105,36 +106,56 @@ export default function Offer() {
               handleQty(e);
             }}
             name="unit"
-            options={["--Elige unidad--", "Kilos", "Gramos", "Atados"]}
+            options={[
+              "--Elige unidad--",
+              "Kilos",
+              "Gramos",
+              "Unidades",
+              "Atados",
+            ]}
           ></Select>
         </DetailsWrapper>
-        <RadioBtn
-          value="producto"
+        <DetailsWrapper style={{ flexDirection: "column" }}>
+          <SmallerTitle>Tipo:</SmallerTitle>
+          <RadioBtn
+            value="producto"
+            onChange={(e) => {
+              handleRadio(e);
+            }}
+            name="plantin-semilla"
+            label="Producto"
+            checked={offerProduct.type === "producto"}
+          ></RadioBtn>
+          <RadioBtn
+            value="plantin"
+            onChange={(e) => {
+              handleRadio(e);
+            }}
+            name="plantin-semilla"
+            label="Plantín"
+            checked={offerProduct.type === "plantin"}
+          ></RadioBtn>
+          <RadioBtn
+            value="semilla"
+            name="plantin-semilla"
+            label="Semilla"
+            onChange={(e) => {
+              handleRadio(e);
+            }}
+            checked={offerProduct.type === "semilla"}
+          ></RadioBtn>
+        </DetailsWrapper>
+        <SmallerTitle style={{ marginTop: "25px" }}>
+          Incluye una breve descripción:
+        </SmallerTitle>
+        <TextArea
+          name="description"
           onChange={(e) => {
-            handleRadio(e);
+            handleQty(e);
           }}
-          name="plantin-semilla"
-          label="Producto"
-          checked={offerProduct.type === "producto"}
-        ></RadioBtn>
-        <RadioBtn
-          value="plantin"
-          onChange={(e) => {
-            handleRadio(e);
-          }}
-          name="plantin-semilla"
-          label="Plantín"
-          checked={offerProduct.type === "plantin"}
-        ></RadioBtn>
-        <RadioBtn
-          value="semilla"
-          name="plantin-semilla"
-          label="Semilla"
-          onChange={(e) => {
-            handleRadio(e);
-          }}
-          checked={offerProduct.type === "semilla"}
-        ></RadioBtn>
+          placeholder="Describe lo que quieres ofrecer :)"
+        ></TextArea>
+
         <SecondaryButton
           style={{
             display: offerProduct.badges.length > 0 ? "flex" : "none",

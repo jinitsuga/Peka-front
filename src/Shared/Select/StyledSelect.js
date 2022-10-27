@@ -8,6 +8,7 @@ export const StyledSelect = styled.select`
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  color: #483838;
   background: #d2d79f;
   border: none;
   border-radius: 4px;

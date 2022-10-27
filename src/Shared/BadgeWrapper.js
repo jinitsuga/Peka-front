@@ -14,8 +14,13 @@ export const BadgesWrapper = styled.div`
 `;
 
 export const DetailsWrapper = styled(BadgesWrapper)`
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #483838;
   display: flex;
   max-width: 300px;
   height: auto;
   flex-wrap: nowrap;
+  margin-bottom: 15px;
 `;

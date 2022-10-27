@@ -8,6 +8,7 @@ const Title = styled.h2`
 `;
 const SmallerTitle = styled(Title)`
   font-size: 20px;
+  font-weight: 500;
 `;
 
 export { Title, SmallerTitle };
