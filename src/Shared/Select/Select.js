@@ -5,7 +5,9 @@ import React from "react";
 
 export default function Select(props) {
   const selectOptions = props.options.map((option, index) => (
-    <SelectOption key={index}>{option}</SelectOption>
+    <SelectOption key={index} value={option.value}>
+      {option.name}
+    </SelectOption>
   ));
   return (
     <Label style={{ margin: "5px", alignSelf: "flex-start" }} htmlFor="unit">

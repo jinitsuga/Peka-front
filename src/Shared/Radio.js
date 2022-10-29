@@ -20,7 +20,9 @@ export default function RadioBtn(props) {
         onChange={props.onChange}
         checked={props.checked}
       ></InputRadio>
-      <Label style={{ fontSize: "15px" }}>{props.label}</Label>
+      <Label htmlFor={props.name} style={{ fontSize: "15px" }}>
+        {props.label}
+      </Label>
     </div>
   );
 }

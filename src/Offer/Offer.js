@@ -136,11 +136,11 @@ export default function Offer() {
             }}
             name="unit"
             options={[
-              "--Elige unidad--",
-              "Kilos",
-              "Gramos",
-              "Unidades",
-              "Atados",
+              { name: "--Elige unidad--", value: null },
+              { name: "Kilos", value: "kilograms" },
+              { name: "Gramos", value: "grams" },
+              { name: "Unidades", value: "units" },
+              { name: "Atados", value: "bundles" },
             ]}
           ></Select>
         </DetailsWrapper>
@@ -149,31 +149,31 @@ export default function Offer() {
             Tipo:
           </SmallerTitle>
           <RadioBtn
-            value="producto"
+            value="product"
             onChange={(e) => {
               handleRadio(e);
             }}
             name="plantin-semilla"
             label="Producto"
-            checked={offerProduct.type === "producto"}
+            checked={offerProduct.type === "product"}
           ></RadioBtn>
           <RadioBtn
-            value="plantin"
+            value="seedling"
             onChange={(e) => {
               handleRadio(e);
             }}
             name="plantin-semilla"
             label="Plantín"
-            checked={offerProduct.type === "plantin"}
+            checked={offerProduct.type === "seedling"}
           ></RadioBtn>
           <RadioBtn
-            value="semilla"
+            value="seeds"
             name="plantin-semilla"
             label="Semilla"
             onChange={(e) => {
               handleRadio(e);
             }}
-            checked={offerProduct.type === "semilla"}
+            checked={offerProduct.type === "seeds"}
           ></RadioBtn>
         </DetailsWrapper>
         <SmallerTitle style={{ marginTop: "25px" }}>
