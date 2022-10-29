@@ -12,6 +12,7 @@ import Select from "../Shared/Select/Select";
 import ListedProducts from "../Shared/ListedProducts";
 import RadioBtn from "../Shared/Radio";
 import { TextArea } from "../Shared/TextArea";
+import { Alert } from "../Shared/ToastAlert";
 
 export default function Offer() {
   const [offerProduct, setOfferProduct] = React.useState({
@@ -26,6 +27,11 @@ export default function Offer() {
   const [offerInput, setOfferInput] = React.useState("");
 
   const [shownProducts, setShownProducts] = React.useState([]);
+
+  const [message, setMessage] = React.useState({
+    shown: false,
+    warning: true,
+  });
 
   const allProducts = GetProducts();
 
@@ -63,6 +69,25 @@ export default function Offer() {
     });
     console.log(offerProduct);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      offerProduct.type !== "" &&
+      offerProduct.quantity !== "" &&
+      offerProduct.unit !== "" &&
+      offerProduct.productId !== ""
+    ) {
+      setMessage({ shown: true, warning: false });
+
+      setTimeout(() => {
+        setMessage((oldMsg) => {
+          return { ...oldMsg, shown: false };
+        });
+      }, 3000);
+    }
+  };
+
   async function sendOffer() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -189,8 +214,9 @@ export default function Offer() {
         ></TextArea>
 
         <SecondaryButton
-          onClick={() => {
-            sendOffer();
+          onClick={(e) => {
+            handleSubmit(e);
+            // sendOffer();
           }}
           style={{
             display: offerProduct.badges.length > 0 ? "flex" : "none",
@@ -199,6 +225,11 @@ export default function Offer() {
         >
           Ofrecer
         </SecondaryButton>
+        <Alert shown={message.shown} warning={message.warning}>
+          {message.warning
+            ? "Asegurate de haber completado todos los campos necesarios."
+            : "Oferta enviada!"}
+        </Alert>
       </FormWrapper>
     </Wrapper>
   );
