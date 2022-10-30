@@ -79,12 +79,18 @@ export default function Offer() {
       offerProduct.productId !== ""
     ) {
       setMessage({ shown: true, warning: false });
-
       setTimeout(() => {
         setMessage((oldMsg) => {
           return { ...oldMsg, shown: false };
         });
       }, 3000);
+    } else {
+      setMessage({ shown: true, warning: true });
+      setTimeout(() => {
+        setMessage((oldMsg) => {
+          return { ...oldMsg, shown: false };
+        });
+      }, 4000);
     }
   };
 
@@ -217,6 +223,7 @@ export default function Offer() {
           onClick={(e) => {
             handleSubmit(e);
             // sendOffer();
+            // Navegar de nuevo aquí para 'reiniciar' el form?
           }}
           style={{
             display: offerProduct.badges.length > 0 ? "flex" : "none",
@@ -228,7 +235,7 @@ export default function Offer() {
         <Alert shown={message.shown} warning={message.warning}>
           {message.warning
             ? "Asegurate de haber completado todos los campos necesarios."
-            : "Oferta enviada!"}
+            : "❁ Oferta creada!"}
         </Alert>
       </FormWrapper>
     </Wrapper>
