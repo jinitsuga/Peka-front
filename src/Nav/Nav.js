@@ -37,7 +37,7 @@ export default function Nav() {
         </Notifications>
       </div>
       <Navbar>
-        <NavLink>Ofertar</NavLink>
+        <NavLink to="/makeoffer">Ofertar</NavLink>
         <NavLink>Buscar</NavLink>
       </Navbar>
     </Header>

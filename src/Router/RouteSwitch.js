@@ -5,6 +5,7 @@ import Register from "../Register/Register";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import Nav from "../Nav/Nav";
 import Offer from "../Offer/Offer";
+import Welcome from "../Welcome/Welcome";
 import { Home } from "../Home/Home";
 import { LoggedStatus } from "../Context/UserContext";
 import { SetProductsList } from "../Context/UserContext";
@@ -12,8 +13,10 @@ import { SetProductsList } from "../Context/UserContext";
 export default function RouteSwitch() {
   const userLoggedIn = LoggedStatus();
   const setProducts = SetProductsList();
+
   return (
     <Routes>
+      <Route path="/welcome" element={<Welcome />}></Route>
       <Route
         path="/"
         element={

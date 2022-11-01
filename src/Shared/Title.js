@@ -9,9 +9,13 @@ const Title = styled.h2`
 const SmallerTitle = styled(Title)`
   font-size: 20px;
   font-weight: 500;
+  max-width: 320px;
+  text-align: center;
 `;
-
-export { Title, SmallerTitle };
+const BabyTitle = styled(SmallerTitle)`
+  font-size: 16px;
+`;
+export { Title, SmallerTitle, BabyTitle };
 
 // font-size: ${(props) => (props.primary ? "28px" : "20px")};
 // color: #483838;

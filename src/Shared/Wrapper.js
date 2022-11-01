@@ -18,4 +18,11 @@ const BrownWrapper = styled(Wrapper)`
   padding: 25px;
 `;
 
-export { Wrapper, BrownWrapper };
+const CardWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: solid 2px;
+`;
+export { Wrapper, BrownWrapper, CardWrapper };

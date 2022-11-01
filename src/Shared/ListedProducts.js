@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem } from "./ListItem";
+import { ProductListItem } from "./ListItem";
 import { CloseButton } from "./Button";
 
 export default function ListedProducts(props) {
@@ -13,9 +13,9 @@ export default function ListedProducts(props) {
 
   const products = props.filteredProducts.map((prod, index) => {
     return (
-      <ListItem id={prod.id} onClick={props.addItem} key={prod.id}>
+      <ProductListItem id={prod.id} onClick={props.addItem} key={prod.id}>
         {prod.name}
-      </ListItem>
+      </ProductListItem>
     );
   });
 

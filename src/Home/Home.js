@@ -2,7 +2,6 @@ import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { FilterInput } from "../Shared/FilterInput";
-import { Title } from "../Shared/Title";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
 import { Badge } from "./ItemBadge";
