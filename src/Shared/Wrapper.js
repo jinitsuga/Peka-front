@@ -28,6 +28,10 @@ const CardWrapper = styled.div`
   border-radius: 5px;
   margin: 5px;
   background-color: #d2d79f;
+  &:hover {
+    transition-duration: 0.5s;
+    transform: scale(1.05);
+  }
 `;
 
 const ItemsWrapper = styled(CardWrapper)`

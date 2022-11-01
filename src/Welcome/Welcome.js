@@ -2,6 +2,7 @@ import React from "react";
 import { Title, SmallerTitle } from "../Shared/Title";
 import { Wrapper, ItemsWrapper } from "../Shared/Wrapper";
 import WelcomeCard from "../Shared/Cards/WelcomeCard";
+import { SecondaryButton } from "../Shared/Button";
 
 export default function Welcome() {
   return (
@@ -30,6 +31,7 @@ export default function Welcome() {
         permitiéndoles intercambiar."
         ></WelcomeCard>
       </ItemsWrapper>
+      <SecondaryButton>Entrar</SecondaryButton>
     </Wrapper>
   );
 }
