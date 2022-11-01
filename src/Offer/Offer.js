@@ -2,7 +2,7 @@ import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { SecondaryButton } from "../Shared/Button";
-import { Title, SmallerTitle } from "../Shared/Title";
+import { SmallerTitle } from "../Shared/Title";
 import { InputQty } from "../Shared/InputField";
 import { FilterInput } from "../Shared/FilterInput";
 import { GetProducts } from "../Context/UserContext";
@@ -13,6 +13,7 @@ import ListedProducts from "../Shared/ListedProducts";
 import RadioBtn from "../Shared/Radio";
 import { TextArea } from "../Shared/TextArea";
 import { Alert } from "../Shared/ToastAlert";
+import { useNavigate } from "react-router-dom";
 
 export default function Offer() {
   const [offerProduct, setOfferProduct] = React.useState({
@@ -34,6 +35,7 @@ export default function Offer() {
   });
 
   const allProducts = GetProducts();
+  const navigate = useNavigate();
 
   const productNames = allProducts.map((prod) => prod.name);
 
@@ -47,6 +49,17 @@ export default function Offer() {
     });
     setShownProducts(filtered);
     console.log(filtered);
+  };
+  const resetForm = () => {
+    setOfferProduct({
+      type: "",
+      quantity: "",
+      unit: "",
+      productId: "",
+      description: "",
+      pictures: "asd",
+      badges: [],
+    });
   };
 
   const selectItem = (e) => {
@@ -79,6 +92,8 @@ export default function Offer() {
       offerProduct.productId !== ""
     ) {
       setMessage({ shown: true, warning: false });
+      resetForm();
+
       setTimeout(() => {
         setMessage((oldMsg) => {
           return { ...oldMsg, shown: false };
@@ -222,6 +237,7 @@ export default function Offer() {
         <SecondaryButton
           onClick={(e) => {
             handleSubmit(e);
+
             // sendOffer();
             // Navegar de nuevo aquí para 'reiniciar' el form?
           }}
