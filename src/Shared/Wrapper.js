@@ -23,6 +23,21 @@ const CardWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: solid 2px;
+  width: 200px;
+  border: solid 2px #42855b;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: #d2d79f;
 `;
-export { Wrapper, BrownWrapper, CardWrapper };
+
+const ItemsWrapper = styled(CardWrapper)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 450px;
+  border: none;
+  background-color: #90b77d;
+  flex-wrap: wrap;
+`;
+export { Wrapper, BrownWrapper, CardWrapper, ItemsWrapper };

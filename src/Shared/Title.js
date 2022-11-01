@@ -13,7 +13,7 @@ const SmallerTitle = styled(Title)`
   text-align: center;
 `;
 const BabyTitle = styled(SmallerTitle)`
-  font-size: 16px;
+  font-size: 18px;
 `;
 export { Title, SmallerTitle, BabyTitle };
 
