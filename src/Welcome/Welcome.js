@@ -3,8 +3,14 @@ import { Title, SmallerTitle } from "../Shared/Title";
 import { Wrapper, ItemsWrapper } from "../Shared/Wrapper";
 import WelcomeCard from "../Shared/Cards/WelcomeCard";
 import { SecondaryButton } from "../Shared/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function Welcome() {
+  const navigate = useNavigate();
+
+  const handleEnter = () => {
+    localStorage.loggedIn ? navigate("/") : navigate("/login");
+  };
   return (
     <Wrapper>
       <Title>Estás por entrar a Peka!</Title>
@@ -31,7 +37,14 @@ export default function Welcome() {
         permitiéndoles intercambiar."
         ></WelcomeCard>
       </ItemsWrapper>
-      <SecondaryButton>Entrar</SecondaryButton>
+      <SecondaryButton
+        onClick={() => {
+          handleEnter();
+        }}
+        style={{ marginTop: "15px" }}
+      >
+        Entrar
+      </SecondaryButton>
     </Wrapper>
   );
 }
