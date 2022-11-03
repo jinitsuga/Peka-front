@@ -1,18 +1,11 @@
 import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
 import { BadgesWrapper, DetailsWrapper } from "../Shared/BadgeWrapper";
-
+import { SecondaryButton } from "../Shared/Button";
 import { Badge } from "../Home/ItemBadge";
 import SearchBar from "../Shared/SearchBar";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
-// label={props.label}
-// placeholder={props.placeholder}
-// type={props.text}
-// name={props.name}
-// onChange={(e) => {
-//   console.log(e.target.value);
-//   props.setState(e.target.value);
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");
@@ -29,6 +22,8 @@ export default function Search() {
     badges: [],
   });
 
+  const products = GetProducts();
+
   const selectItem = (e) => {
     setSearchProduct((oldProduct) => {
       return {
@@ -38,14 +33,36 @@ export default function Search() {
       };
     });
   };
+
+  async function makeSearch() {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const reqData = JSON.stringify({
+      page: 1,
+    });
+
+    console.log(reqData);
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+
+      redirect: "follow",
+      credentials: "include",
+    };
+
+    await fetch("https://peka-api-wt2x.onrender.com/offers", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }
+
   const itemBadges =
     searchProduct.badges.length > 0 &&
     searchProduct.badges.map((prod, index) => (
       <Badge key={index}>{prod}</Badge>
     ));
-  // Renderizar ListedProducts debajo, pasandole filteredProducts como 'filteredProducts'
 
-  const products = GetProducts();
   return (
     <Wrapper>
       <SearchBar
@@ -64,6 +81,14 @@ export default function Search() {
         filteredProducts={shownProducts}
         display="flex"
       ></ListedProducts>
+      <SecondaryButton
+        onClick={() => {
+          makeSearch();
+        }}
+        style={{ display: searchProduct.badges.length > 0 ? "flex" : "none" }}
+      >
+        Buscar
+      </SecondaryButton>
     </Wrapper>
   );
 }

@@ -23,7 +23,7 @@ export default function SearchBar(props) {
     console.log(filtered);
   };
   return (
-    <Wrapper>
+    <Wrapper style={{ paddingBottom: "10px" }}>
       <FilterInput
         label={props.label}
         placeholder={props.placeholder}
