@@ -6,6 +6,7 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import Nav from "../Nav/Nav";
 import Offer from "../Offer/Offer";
 import Welcome from "../Welcome/Welcome";
+import Search from "../Search/Search";
 import { Home } from "../Home/Home";
 import { LoggedStatus } from "../Context/UserContext";
 import { SetProductsList } from "../Context/UserContext";
@@ -29,7 +30,15 @@ export default function RouteSwitch() {
       <Route path="/register" element={<Register />}></Route>
       <Route path="/passreset" element={<ResetPassword />}></Route>
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/search" element={<Login />}></Route>
+      <Route
+        path="/search"
+        element={
+          <div>
+            <Nav />
+            <Search />
+          </div>
+        }
+      ></Route>
       <Route
         path="/makeoffer"
         element={
