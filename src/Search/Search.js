@@ -1,5 +1,8 @@
 import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
+import { BadgesWrapper, DetailsWrapper } from "../Shared/BadgeWrapper";
+
+import { Badge } from "../Home/ItemBadge";
 import SearchBar from "../Shared/SearchBar";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
@@ -35,7 +38,11 @@ export default function Search() {
       };
     });
   };
-
+  const itemBadges =
+    searchProduct.badges.length > 0 &&
+    searchProduct.badges.map((prod, index) => (
+      <Badge key={index}>{prod}</Badge>
+    ));
   // Renderizar ListedProducts debajo, pasandole filteredProducts como 'filteredProducts'
 
   const products = GetProducts();
@@ -48,6 +55,9 @@ export default function Search() {
         placeholder="ej: frutilla, apio, zanahoria..."
         label="Haz tu búsqueda!"
       ></SearchBar>
+      <DetailsWrapper>
+        <BadgesWrapper>{itemBadges}</BadgesWrapper>
+      </DetailsWrapper>
       <ListedProducts
         addItem={selectItem}
         inputField={inputField}
