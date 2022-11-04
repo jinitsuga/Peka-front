@@ -12,6 +12,8 @@ export default function Search() {
 
   const [shownProducts, setShownProducts] = React.useState([]);
 
+  const [offers, setOffers] = React.useState([]);
+
   const [searchProduct, setSearchProduct] = React.useState({
     type: "",
     quantity: "",
@@ -39,21 +41,21 @@ export default function Search() {
     myHeaders.append("Content-Type", "application/json");
 
     const reqData = JSON.stringify({
-      page: 1,
+      type: "product",
     });
 
     console.log(reqData);
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
-
+      //   body: reqData,
       redirect: "follow",
       credentials: "include",
     };
 
-    await fetch("https://peka-api-wt2x.onrender.com/offers", requestOptions)
+    await fetch("https://peka-api-wt2x.onrender.com/offers/", requestOptions)
       .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((result) => console.log(JSON.parse(result)))
       .catch((error) => console.log("error", error));
   }
 
@@ -89,6 +91,7 @@ export default function Search() {
       >
         Buscar
       </SecondaryButton>
+      <Wrapper style={{ paddingBottom: "10px" }}></Wrapper>
     </Wrapper>
   );
 }

@@ -238,7 +238,7 @@ export default function Offer() {
           onClick={(e) => {
             handleSubmit(e);
 
-            // sendOffer();
+            sendOffer();
             // Navegar de nuevo aquí para 'reiniciar' el form?
           }}
           style={{
