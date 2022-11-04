@@ -66,7 +66,17 @@ export default function Search() {
     offers.length > 0 &&
     offers.map((produ, index) => {
       const name = products.find((item) => item.id === produ.ProductId).name;
-      return console.log(name);
+      return (
+        <OfferCard
+          beige
+          name={name}
+          quantity={produ.quantity}
+          qtyUnit={produ.quantityUnit}
+          type={produ.type}
+          description={produ.description}
+          key={index}
+        ></OfferCard>
+      );
     });
 
   const itemBadges =
@@ -101,7 +111,9 @@ export default function Search() {
       >
         Buscar
       </SecondaryButton>
-      <Wrapper style={{ paddingBottom: "10px" }}></Wrapper>
+      <Wrapper style={{ paddingBottom: "10px", flexDirection: "row" }}>
+        {offerCards}{" "}
+      </Wrapper>
     </Wrapper>
   );
 }
