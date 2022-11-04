@@ -29,7 +29,7 @@ const CardWrapper = styled.div`
   margin: 5px;
   background-color: #d2d79f;
   &:hover {
-    transition-duration: 0.5s;
+    transition-duration: 0.35s;
     transform: scale(1.05);
   }
 `;
@@ -45,7 +45,7 @@ const ItemsWrapper = styled(CardWrapper)`
   flex-wrap: wrap;
 `;
 
-const OfferCard = styled(CardWrapper)`
+const OfferCardWrapper = styled(CardWrapper)`
   background: ${(props) => (props.beige ? "#d2d79f" : "#483838")};
   color: ${(props) => (props.beige ? "#483838" : "#d2d79f")}
   width: 150px;
@@ -57,4 +57,4 @@ const OfferCard = styled(CardWrapper)`
   }
 `;
 
-export { Wrapper, BrownWrapper, CardWrapper, ItemsWrapper, OfferCard };
+export { Wrapper, BrownWrapper, CardWrapper, ItemsWrapper, OfferCardWrapper };

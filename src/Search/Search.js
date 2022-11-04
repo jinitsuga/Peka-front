@@ -6,6 +6,7 @@ import { Badge } from "../Home/ItemBadge";
 import SearchBar from "../Shared/SearchBar";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
+import OfferCard from "./OfferCard";
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");
@@ -25,6 +26,7 @@ export default function Search() {
   });
 
   const products = GetProducts();
+  // console.log(products);
 
   const selectItem = (e) => {
     setSearchProduct((oldProduct) => {
@@ -55,9 +57,17 @@ export default function Search() {
 
     await fetch("https://peka-api-wt2x.onrender.com/offers/", requestOptions)
       .then((response) => response.text())
-      .then((result) => console.log(JSON.parse(result)))
+      .then((result) => setOffers(JSON.parse(result)))
       .catch((error) => console.log("error", error));
   }
+  console.log(offers);
+
+  const offerCards =
+    offers.length > 0 &&
+    offers.map((produ, index) => {
+      const name = products.find((item) => item.id === produ.ProductId).name;
+      return console.log(name);
+    });
 
   const itemBadges =
     searchProduct.badges.length > 0 &&
