@@ -51,6 +51,7 @@ const OfferCard = styled(CardWrapper)`
   width: 150px;
 
   &:hover {
+    
     transition-duration: 0.3s;
     transform: scale(1.05);
   }

@@ -18,6 +18,7 @@ const Button = styled.button`
     color: #d2d79f;
     background: #42855b;
     transform: scale(1.07);
+    cursor: pointer;
   }
   &:active {
     color: #d2d79f;
