@@ -48,8 +48,10 @@ const ItemsWrapper = styled(CardWrapper)`
 const OfferCardWrapper = styled(CardWrapper)`
   background: ${(props) => (props.beige ? "#d2d79f" : "#483838")};
   color: ${(props) => (props.beige ? "#483838" : "#d2d79f")};
-  width: 135px;
-
+  width: 175px;
+  height: 200px;
+  align-self: center;
+  justify-self: center;
   &:hover {
     transition-duration: 0.2s;
     transform: scale(1.05);

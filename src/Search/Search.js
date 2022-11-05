@@ -111,7 +111,17 @@ export default function Search() {
       >
         Buscar
       </SecondaryButton>
-      <Wrapper style={{ paddingBottom: "10px", flexDirection: "row" }}>
+      <Wrapper
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1FR 1FR",
+          gridTemplateRows: "1FR",
+          alignItems: "center",
+          paddingBottom: "10px",
+          flexDirection: "row",
+          marginTop: "45px",
+        }}
+      >
         {offerCards}{" "}
       </Wrapper>
     </Wrapper>
