@@ -10,7 +10,13 @@ export default function OfferCard(props) {
       <SmallerTitle style={{ margin: "5px", marginTop: "15px" }}>
         {props.name}
       </SmallerTitle>
-      <DetailsWrapper style={{ maxWidth: "130px" }}>
+      <DetailsWrapper
+        style={{
+          maxWidth: "130px",
+          borderBottom: "solid 3px",
+          paddingBottom: "5px",
+        }}
+      >
         <BabyTitle style={{ margin: "0px", fontSize: "15px" }}>
           {props.quantity} {props.qtyUnit}
         </BabyTitle>
