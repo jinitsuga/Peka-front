@@ -6,7 +6,7 @@ export default function Checkbox(props) {
   return (
     <Label htmlFor={props.name}>
       {props.label}
-      <InputCheck name={props.name}></InputCheck>
+      <InputCheck value={props.value} name={props.name}></InputCheck>
     </Label>
   );
 }

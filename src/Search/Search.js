@@ -7,7 +7,7 @@ import SearchBar from "../Shared/SearchBar";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
 import OfferCard from "./OfferCard";
-import { InputCheck } from "../Shared/InputField";
+import Checkbox from "../Shared/Checkbox";
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");
@@ -27,7 +27,34 @@ export default function Search() {
   });
 
   const products = GetProducts();
-  // console.log(products);
+
+  const checkboxData = [
+    {
+      name: "type-check",
+      value: "product",
+      label: "Producto",
+      onChange: (e) => {
+        handleCheckbox(e);
+      },
+    },
+    {
+      name: "type-check",
+      value: "seedling",
+      label: "Plantín",
+      onChange: (e) => {
+        handleCheckbox(e);
+      },
+    },
+    {
+      name: "type-check",
+      value: "seeds",
+      label: "Semillas",
+      onChange: (e) => {
+        handleCheckbox(e);
+      },
+    },
+  ];
+  const checkboxes = checkboxData.map((item) => <Checkbox {...item} />);
 
   const selectItem = (e) => {
     setSearchProduct((oldProduct) => {
@@ -39,6 +66,11 @@ export default function Search() {
     });
   };
 
+  function handleCheckbox(e) {
+    setSearchProduct((oldProduct) => {
+      return { ...oldProduct, type: e.target.value };
+    });
+  }
   async function makeSearch() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -104,6 +136,7 @@ export default function Search() {
         filteredProducts={shownProducts}
         display="flex"
       ></ListedProducts>
+      <div>{checkboxes}</div>
       <SecondaryButton
         onClick={() => {
           makeSearch();
@@ -125,7 +158,6 @@ export default function Search() {
       >
         {offerCards}{" "}
       </Wrapper>
-      <div></div>
     </Wrapper>
   );
 }
