@@ -125,6 +125,7 @@ export default function Search() {
       >
         {offerCards}{" "}
       </Wrapper>
+      <div></div>
     </Wrapper>
   );
 }
