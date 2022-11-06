@@ -56,7 +56,11 @@ export default function Login() {
       .then((result) => {
         if (responseStatus === "OK") {
           const respObj = JSON.parse(result);
-          updateUser({ name: respObj.name, email: respObj.email });
+          updateUser({
+            name: respObj.name,
+            email: respObj.email,
+            id: respObj.id,
+          });
           localStorage.setItem("name", respObj.name);
           localStorage.setItem("email", respObj.email);
           localStorage.setItem("loggedIn", true);

@@ -7,6 +7,7 @@ import SearchBar from "../Shared/SearchBar";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
 import OfferCard from "./OfferCard";
+import { InputCheck } from "../Shared/InputField";
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");

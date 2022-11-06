@@ -40,4 +40,9 @@ const InputRadio = styled(InputQty).attrs((props) => ({
   accent-color: #42855b;
 `;
 
-export { InputField, InputQty, InputRadio };
+const InputCheck = styled(InputRadio).attrs((props) => ({
+  name: props.name,
+  type: "checkbox",
+}))``;
+
+export { InputField, InputQty, InputRadio, InputCheck };
