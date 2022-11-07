@@ -42,7 +42,9 @@ export default function Nav() {
           <NavLink to="/search">Buscar</NavLink>
         </div>
         <div>
-          <NavLink style={{ fontSize: "16px" }}>Mis ofertas</NavLink>
+          <NavLink to="/myoffers" style={{ fontSize: "16px" }}>
+            Mis ofertas
+          </NavLink>
         </div>
       </Navbar>
     </Header>

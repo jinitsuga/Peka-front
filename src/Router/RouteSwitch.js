@@ -10,10 +10,13 @@ import Search from "../Search/Search";
 import { Home } from "../Home/Home";
 import { LoggedStatus } from "../Context/UserContext";
 import { SetProductsList } from "../Context/UserContext";
+import MyOffers from "../MyOffers/MyOffers";
 
 export default function RouteSwitch() {
   const userLoggedIn = LoggedStatus();
   const setProducts = SetProductsList();
+
+  // ugly routes, needs some cleaning up
 
   return (
     <Routes>
@@ -45,6 +48,15 @@ export default function RouteSwitch() {
           <div>
             <Nav />
             <Offer />
+          </div>
+        }
+      ></Route>
+      <Route
+        path="/myoffers"
+        element={
+          <div>
+            <Nav />
+            <MyOffers />
           </div>
         }
       ></Route>
