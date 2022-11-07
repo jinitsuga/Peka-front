@@ -103,7 +103,6 @@ export default function Search() {
       .then((result) => setOffers(JSON.parse(result)))
       .catch((error) => console.log("error", error));
   }
-  console.log(offers);
 
   const offerCards =
     offers.length > 0 &&
@@ -146,7 +145,9 @@ export default function Search() {
         filteredProducts={shownProducts}
         display="flex"
       ></ListedProducts>
-      <div>{checkboxes}</div>
+      <DetailsWrapper style={{ marginBottom: "20px" }}>
+        {checkboxes}
+      </DetailsWrapper>
       <SecondaryButton
         onClick={() => {
           makeSearch();
@@ -163,7 +164,7 @@ export default function Search() {
           alignItems: "center",
           paddingBottom: "10px",
           flexDirection: "row",
-          marginTop: "45px",
+          marginTop: "25px",
         }}
       >
         {offerCards}{" "}

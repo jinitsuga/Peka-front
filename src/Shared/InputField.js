@@ -43,6 +43,11 @@ const InputRadio = styled(InputQty).attrs((props) => ({
 const InputCheck = styled(InputRadio).attrs((props) => ({
   name: props.name,
   type: "checkbox",
-}))``;
+}))`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 export { InputField, InputQty, InputRadio, InputCheck };
