@@ -17,7 +17,7 @@ export default function Search() {
   const [offers, setOffers] = React.useState([]);
 
   const [searchProduct, setSearchProduct] = React.useState({
-    type: "",
+    type: [],
     quantity: "",
     unit: "",
     productId: "",
@@ -54,7 +54,9 @@ export default function Search() {
       },
     },
   ];
-  const checkboxes = checkboxData.map((item) => <Checkbox {...item} />);
+  const checkboxes = checkboxData.map((item, index) => (
+    <Checkbox key={index} {...item} />
+  ));
 
   const selectItem = (e) => {
     setSearchProduct((oldProduct) => {
@@ -68,9 +70,17 @@ export default function Search() {
 
   function handleCheckbox(e) {
     setSearchProduct((oldProduct) => {
-      return { ...oldProduct, type: e.target.value };
+      const types = oldProduct.type;
+
+      if (!e.target.checked) {
+        const newTypes = types.filter((type) => type !== e.target.value);
+        return { ...oldProduct, type: newTypes };
+      }
+
+      return { ...oldProduct, type: [...oldProduct.type, e.target.value] };
     });
   }
+
   async function makeSearch() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
