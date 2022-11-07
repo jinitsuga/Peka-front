@@ -6,9 +6,10 @@ import { Badge } from "../Home/ItemBadge";
 import SearchBar from "../Shared/SearchBar";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
-import OfferCard from "./OfferCard";
+
 import Checkbox from "../Shared/Checkbox";
 import { BabyTitle } from "../Shared/Title";
+import OfferCard from "../Shared/Cards/OfferCard";
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");

@@ -1,8 +1,8 @@
 import React from "react";
-import { OfferCardWrapper } from "../Shared/Wrapper";
-import { SmallerTitle, BabyTitle } from "../Shared/Title";
-import { DetailsWrapper } from "../Shared/BadgeWrapper";
-import { Text } from "../Shared/Text";
+import { OfferCardWrapper } from "../Wrapper";
+import { SmallerTitle, BabyTitle } from "../Title";
+import { DetailsWrapper } from "../BadgeWrapper";
+import { Text } from "../Text";
 
 export default function OfferCard(props) {
   return (
