@@ -8,6 +8,7 @@ import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
 import OfferCard from "./OfferCard";
 import Checkbox from "../Shared/Checkbox";
+import { BabyTitle } from "../Shared/Title";
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");
@@ -134,7 +135,7 @@ export default function Search() {
         setShownProds={setShownProducts}
         setStatusInput={setInputField}
         placeholder="ej: frutilla, apio, zanahoria..."
-        label="Haz tu búsqueda!"
+        label="Busca tu producto!"
       ></SearchBar>
       <DetailsWrapper>
         <BadgesWrapper>{itemBadges}</BadgesWrapper>
@@ -145,6 +146,7 @@ export default function Search() {
         filteredProducts={shownProducts}
         display="flex"
       ></ListedProducts>
+      <BabyTitle style={{ margin: "6px" }}>Elige el tipo: </BabyTitle>
       <DetailsWrapper style={{ marginBottom: "20px" }}>
         {checkboxes}
       </DetailsWrapper>

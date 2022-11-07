@@ -20,10 +20,10 @@ const NavLink = styled(StyledLink)`
   font-weight: 600;
   padding: 10px;
   color: #483838;
+  border-radius: 0;
   &:hover {
     color: #42855b;
     border-bottom: solid 2px;
-    border-radius: 0;
   }
 `;
 export { StyledLink, NavLink };

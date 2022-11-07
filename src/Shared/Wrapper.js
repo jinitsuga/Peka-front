@@ -46,7 +46,7 @@ const ItemsWrapper = styled(CardWrapper)`
 `;
 
 const OfferCardWrapper = styled(CardWrapper)`
-  background: linear-gradient(45deg, #ff0063, 12%, #d2d79f 95%);
+  background: linear-gradient(45deg, #d2d79f 90%, #483838 25%);
   color: #90b77d;
   width: 175px;
   height: 200px;

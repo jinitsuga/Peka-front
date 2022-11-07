@@ -9,6 +9,7 @@ const Header = styled.header`
   padding: 10px;
   padding-bottom: 25px;
   width: 450px;
+  height: 182px;
   max-width: 480px;
   background: #90b77d;
 `;

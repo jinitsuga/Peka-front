@@ -37,8 +37,13 @@ export default function Nav() {
         </Notifications>
       </div>
       <Navbar>
-        <NavLink to="/makeoffer">Ofertar</NavLink>
-        <NavLink to="/search">Buscar</NavLink>
+        <div>
+          <NavLink to="/makeoffer">Ofertar</NavLink>
+          <NavLink to="/search">Buscar</NavLink>
+        </div>
+        <div>
+          <NavLink style={{ fontSize: "16px" }}>Mis ofertas</NavLink>
+        </div>
       </Navbar>
     </Header>
   );

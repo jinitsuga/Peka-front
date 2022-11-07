@@ -48,6 +48,8 @@ const InputCheck = styled(InputRadio).attrs((props) => ({
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  accent-color: #42855b;
+  cursor: pointer;
 `;
 
 export { InputField, InputQty, InputRadio, InputCheck };
