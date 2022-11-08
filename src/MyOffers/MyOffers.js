@@ -4,9 +4,11 @@ import { UserInfo } from "../Context/UserContext";
 import OfferCard from "../Shared/Cards/OfferCard";
 import { BabyTitle } from "../Shared/Title";
 import { SecondaryButton } from "../Shared/Button";
+import { GetProducts } from "../Context/UserContext";
 
 export default function MyOffers() {
   const userData = UserInfo();
+  const products = GetProducts();
 
   const [userOffers, setUserOffers] = React.useState([]);
 
@@ -15,7 +17,7 @@ export default function MyOffers() {
     myHeaders.append("Content-Type", "application/json");
 
     // const reqData = JSON.stringify({
-    //   type: "product",
+    //   type: "offerct",
     // });
 
     const requestOptions = {
@@ -32,12 +34,26 @@ export default function MyOffers() {
     )
       .then((response) => response.text())
       .then((result) => {
-        console.log(result);
         setUserOffers(JSON.parse(result));
       })
-
       .catch((error) => console.log("error", error));
   }
+
+  const offers =
+    userOffers.length > 0 &&
+    userOffers.map((offer, index) => {
+      const name = products.find((item) => item.id === offer.ProductId).name;
+      return (
+        <OfferCard
+          name={name}
+          key={index}
+          quantity={offer.quantity}
+          qtyUnit={offer.quantityUnit}
+          type={offer.type}
+          description={offer.description}
+        />
+      );
+    });
 
   return (
     <Wrapper>
@@ -52,6 +68,19 @@ export default function MyOffers() {
       >
         Ver mis ofertas
       </SecondaryButton>
+      <Wrapper
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1FR 1FR",
+          gridTemplateRows: "1FR",
+          alignItems: "center",
+          paddingBottom: "10px",
+          flexDirection: "row",
+          marginTop: "25px",
+        }}
+      >
+        {offers}
+      </Wrapper>
     </Wrapper>
   );
 }

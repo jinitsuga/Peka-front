@@ -112,7 +112,6 @@ export default function Search() {
       return (
         <OfferCard
           beige
-          name={name}
           quantity={produ.quantity}
           qtyUnit={produ.quantityUnit}
           type={produ.type}
