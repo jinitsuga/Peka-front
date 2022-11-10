@@ -12,9 +12,27 @@ export default function MyOffers() {
 
   const [userOffers, setUserOffers] = React.useState([]);
 
-  const deleteOffer = (e) => {
-    console.log(e.target.key);
-  };
+  async function deleteOffer(id) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      //   body: reqData,
+      redirect: "follow",
+      credentials: "include",
+    };
+    await fetch(
+      `https://peka-api-wt2x.onrender.com/offers/${id}`,
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => console.log("error", err));
+  }
 
   async function getOffers() {
     const myHeaders = new Headers();
@@ -55,8 +73,8 @@ export default function MyOffers() {
           qtyUnit={offer.quantityUnit}
           type={offer.type}
           description={offer.description}
-          delete={deleteOffer}
           id={index}
+          delete={deleteOffer}
         />
       );
     });

@@ -29,7 +29,7 @@ export default function OfferCard(props) {
       <EditButton
         red
         onClick={(e) => {
-          console.log(props.id);
+          props.delete(props.id);
         }}
       >
         Eliminar
