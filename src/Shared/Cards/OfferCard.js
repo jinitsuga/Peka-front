@@ -8,6 +8,7 @@ import { EditButton } from "../Button";
 export default function OfferCard(props) {
   return (
     <OfferCardWrapper beige={props.beige}>
+      <EditButton>Editar</EditButton>
       <SmallerTitle style={{ margin: "5px", marginTop: "15px" }}>
         {props.name}
       </SmallerTitle>
@@ -25,7 +26,7 @@ export default function OfferCard(props) {
           {props.type}
         </BabyTitle>
       </DetailsWrapper>
-      <Text>{props.description}</Text>
+      <Text style={{ marginBottom: "30px" }}>{props.description}</Text>
       <EditButton
         red
         onClick={(e) => {
