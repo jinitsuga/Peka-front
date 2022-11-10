@@ -65,6 +65,7 @@ export default function MyOffers() {
       const name = products.find((item) => item.id === offer.ProductId).name;
       return (
         <OfferCard
+          owner={true}
           name={name}
           key={index}
           quantity={offer.quantity}

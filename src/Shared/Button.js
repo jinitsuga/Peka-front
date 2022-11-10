@@ -55,6 +55,7 @@ const CloseButton = styled(SecondaryButton)`
 `;
 
 const EditButton = styled(SecondaryButton)`
+  display: ${(props) => (props.owner ? "flex" : "none")};
   font-size: 12px;
   width: 80px;
   height: 30px;

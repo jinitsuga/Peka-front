@@ -8,7 +8,7 @@ import { EditButton } from "../Button";
 export default function OfferCard(props) {
   return (
     <OfferCardWrapper beige={props.beige}>
-      <EditButton>Editar</EditButton>
+      <EditButton owner={props.owner}>Editar</EditButton>
       <SmallerTitle style={{ margin: "5px", marginTop: "15px" }}>
         {props.name}
       </SmallerTitle>
@@ -28,6 +28,7 @@ export default function OfferCard(props) {
       </DetailsWrapper>
       <Text style={{ marginBottom: "30px" }}>{props.description}</Text>
       <EditButton
+        owner={props.owner}
         red
         onClick={(e) => {
           props.delete(props.id);
