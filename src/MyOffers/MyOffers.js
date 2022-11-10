@@ -12,6 +12,10 @@ export default function MyOffers() {
 
   const [userOffers, setUserOffers] = React.useState([]);
 
+  const deleteOffer = (e) => {
+    console.log(e.target.key);
+  };
+
   async function getOffers() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -51,6 +55,8 @@ export default function MyOffers() {
           qtyUnit={offer.quantityUnit}
           type={offer.type}
           description={offer.description}
+          delete={deleteOffer}
+          id={index}
         />
       );
     });

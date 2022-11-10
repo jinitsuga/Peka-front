@@ -3,6 +3,7 @@ import { OfferCardWrapper } from "../Wrapper";
 import { SmallerTitle, BabyTitle } from "../Title";
 import { DetailsWrapper } from "../BadgeWrapper";
 import { Text } from "../Text";
+import { EditButton } from "../Button";
 
 export default function OfferCard(props) {
   return (
@@ -25,6 +26,14 @@ export default function OfferCard(props) {
         </BabyTitle>
       </DetailsWrapper>
       <Text>{props.description}</Text>
+      <EditButton
+        red
+        onClick={(e) => {
+          console.log(props.id);
+        }}
+      >
+        Eliminar
+      </EditButton>
     </OfferCardWrapper>
   );
 }

@@ -53,4 +53,17 @@ const CloseButton = styled(SecondaryButton)`
 
 
 `;
-export { Button, SecondaryButton, NavButton, CloseButton };
+
+const EditButton = styled(SecondaryButton)`
+  font-size: 12px;
+  width: 80px;
+  height: 30px;
+  &:hover {
+    background: ${(props) => (props.red ? "red" : "#42855b")};
+  }
+  &:active {
+    color: #d2d79f;
+    background: #483838;
+  }
+`;
+export { Button, SecondaryButton, NavButton, CloseButton, EditButton };
