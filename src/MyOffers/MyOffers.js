@@ -13,6 +13,8 @@ export default function MyOffers() {
   const [userOffers, setUserOffers] = React.useState([]);
 
   async function deleteOffer(id) {
+    const offerId = userOffers.find((offer, index) => index === id).id;
+
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -24,7 +26,7 @@ export default function MyOffers() {
       credentials: "include",
     };
     await fetch(
-      `https://peka-api-wt2x.onrender.com/offers/${id}`,
+      `https://peka-api-wt2x.onrender.com/offers/${offerId}`,
       requestOptions
     )
       .then((response) => response.text())
@@ -37,10 +39,6 @@ export default function MyOffers() {
   async function getOffers() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
-    // const reqData = JSON.stringify({
-    //   type: "offerct",
-    // });
 
     const requestOptions = {
       method: "GET",
