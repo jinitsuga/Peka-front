@@ -10,6 +10,8 @@ export default function MyOffers() {
   const userData = UserInfo();
   const products = GetProducts();
 
+  console.log(userData);
+
   const [userOffers, setUserOffers] = React.useState([]);
 
   async function deleteOffer(id) {
@@ -26,7 +28,7 @@ export default function MyOffers() {
       credentials: "include",
     };
     await fetch(
-      `https://peka-api-wt2x.onrender.com/offers/${offerId}`,
+      `https://peka-api-wt2x.onrender.com/users/${userData.id}/offers`,
       requestOptions
     )
       .then((response) => response.text())
@@ -49,7 +51,7 @@ export default function MyOffers() {
     };
 
     await fetch(
-      "https://peka-api-wt2x.onrender.com/users/3/offers",
+      `https://peka-api-wt2x.onrender.com/users/${userData.id}/offers`,
       requestOptions
     )
       .then((response) => response.text())

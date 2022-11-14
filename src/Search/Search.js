@@ -28,6 +28,7 @@ export default function Search() {
   });
 
   const products = GetProducts();
+  console.log(products);
 
   const checkboxData = [
     {
@@ -86,6 +87,7 @@ export default function Search() {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    const params = new URLSearchParams({ products: searchProduct.productId });
     const reqData = JSON.stringify({
       type: "product",
     });
@@ -99,7 +101,11 @@ export default function Search() {
       credentials: "include",
     };
 
-    await fetch("https://peka-api-wt2x.onrender.com/offers/", requestOptions)
+    await fetch(
+      `http://localhost:5000/offers/search?${params}`,
+      // `https://peka-api-wt2x.onrender.com/offers/search?${params}`,
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => setOffers(JSON.parse(result)))
       .catch((error) => console.log("error", error));
@@ -108,7 +114,7 @@ export default function Search() {
   const offerCards =
     offers.length > 0 &&
     offers.map((produ, index) => {
-      const name = products.find((item) => item.id === produ.ProductId).name;
+      const name = products.find((item) => item.id === produ.productId).name;
       return (
         <OfferCard
           beige
