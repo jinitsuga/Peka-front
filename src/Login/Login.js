@@ -50,7 +50,6 @@ export default function Login() {
     await fetch("https://peka-api-wt2x.onrender.com/signin", reqOptions)
       .then((response) => {
         responseStatus = response.statusText;
-        console.log(responseStatus);
         return response.text();
       })
       .then((result) => {
@@ -66,11 +65,11 @@ export default function Login() {
           localStorage.setItem("loggedIn", true);
         }
       })
-      .then(() => {
-        if (responseStatus === "OK") {
-          navigate("/");
-        }
-      })
+      // .then(() => {
+      //   if (responseStatus === "OK") {
+      //     navigate("/");
+      //   }
+      // })
       .catch((error) => console.log("error => ", error.message));
   }
 
@@ -102,8 +101,9 @@ export default function Login() {
   const passwordValid = formData[1].pattern.test(loginData.password);
 
   async function handleLogin(e) {
-    if (emailValid && passwordValid) {
+    {
       await logUserIn();
+      navigate("/");
       console.log("user logged in");
     }
   }
@@ -130,11 +130,11 @@ export default function Login() {
         </div>
       </FormWrapper>
       <ButtonWrapper>
-        <Link style={{ textDecoration: "none" }} to="/">
+        <Link style={{ textDecoration: "none" }}>
           <Button
             primary
             onClick={() => {
-              handleLogin();
+              if (emailValid && passwordValid) handleLogin();
             }}
           >
             Ingresar

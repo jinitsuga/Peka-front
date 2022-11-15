@@ -20,6 +20,7 @@ export default function Signout() {
       })
       .catch((error) => console.log("error", error));
   }
+
   async function handleSignout() {
     await signOut();
     localStorage.clear();
