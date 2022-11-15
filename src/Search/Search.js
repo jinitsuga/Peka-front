@@ -103,7 +103,7 @@ export default function Search() {
       .then((response) => response.text())
       .then((result) => {
         setOffers(JSON.parse(result));
-        console.log(result);
+        console.log(JSON.parse(result));
       })
 
       .catch((error) => console.log("error", error));
@@ -112,10 +112,11 @@ export default function Search() {
   const offerCards =
     offers.length > 0 &&
     offers.map((produ, index) => {
-      const name = products.find((item) => item.id === produ.productId).name;
+      // const name = products.find((item) => item.id === produ.productId).name;
       return (
         <OfferCard
           beige
+          name={produ.product.name}
           quantity={produ.quantity}
           qtyUnit={produ.quantityUnit}
           type={produ.type}
