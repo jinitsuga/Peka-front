@@ -10,12 +10,12 @@ export default function MyOffers() {
   const userData = UserInfo();
   const products = GetProducts();
 
-  console.log(userData);
-
   const [userOffers, setUserOffers] = React.useState([]);
 
   async function deleteOffer(id) {
     const offerId = userOffers.find((offer, index) => index === id).id;
+
+    const newOffers = userOffers.splice(offerId, 1);
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -23,7 +23,6 @@ export default function MyOffers() {
     const requestOptions = {
       method: "DELETE",
       headers: myHeaders,
-      //   body: reqData,
       redirect: "follow",
       credentials: "include",
     };
@@ -36,6 +35,8 @@ export default function MyOffers() {
         console.log(result);
       })
       .catch((err) => console.log("error", err));
+
+    setUserOffers(newOffers);
   }
 
   async function getOffers() {
@@ -45,7 +46,6 @@ export default function MyOffers() {
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
-      //   body: reqData,
       redirect: "follow",
       credentials: "include",
     };
@@ -57,6 +57,7 @@ export default function MyOffers() {
       .then((response) => response.text())
       .then((result) => {
         setUserOffers(JSON.parse(result));
+        console.log(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));
   }
@@ -64,11 +65,11 @@ export default function MyOffers() {
   const offers =
     userOffers.length > 0 &&
     userOffers.map((offer, index) => {
-      const name = products.find((item) => item.id === offer.ProductId).name;
+      console.log(offer);
       return (
         <OfferCard
           owner={true}
-          name={name}
+          name={offer.product.name}
           key={index}
           quantity={offer.quantity}
           qtyUnit={offer.quantityUnit}

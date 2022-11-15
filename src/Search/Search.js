@@ -96,8 +96,8 @@ export default function Search() {
     };
 
     await fetch(
-      `https://peka-api-wt2x.onrender.com/offers/`,
-      // search?${params}
+      `https://peka-api-wt2x.onrender.com/offers/search?${params}`,
+      //
       requestOptions
     )
       .then((response) => response.text())
