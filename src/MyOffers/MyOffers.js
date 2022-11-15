@@ -28,7 +28,7 @@ export default function MyOffers() {
       credentials: "include",
     };
     await fetch(
-      `https://peka-api-wt2x.onrender.com/users/${userData.id}/offers`,
+      `https://peka-api-wt2x.onrender.com/offers/${offerId}`,
       requestOptions
     )
       .then((response) => response.text())

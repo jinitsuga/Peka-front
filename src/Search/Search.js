@@ -28,7 +28,6 @@ export default function Search() {
   });
 
   const products = GetProducts();
-  console.log(products);
 
   const checkboxData = [
     {
@@ -88,26 +87,25 @@ export default function Search() {
     myHeaders.append("Content-Type", "application/json");
 
     const params = new URLSearchParams({ products: searchProduct.productId });
-    const reqData = JSON.stringify({
-      type: "product",
-    });
 
-    console.log(reqData);
     const requestOptions = {
       method: "GET",
       headers: myHeaders,
-      //   body: reqData,
       redirect: "follow",
       credentials: "include",
     };
 
     await fetch(
-      `http://localhost:5000/offers/search?${params}`,
-      // `https://peka-api-wt2x.onrender.com/offers/search?${params}`,
+      `https://peka-api-wt2x.onrender.com/offers/`,
+      // search?${params}
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => setOffers(JSON.parse(result)))
+      .then((result) => {
+        setOffers(JSON.parse(result));
+        console.log(result);
+      })
+
       .catch((error) => console.log("error", error));
   }
 

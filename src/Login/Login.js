@@ -150,7 +150,7 @@ export default function Login() {
             marginTop: "25px",
           }}
         >
-          <StyledLink to="/register">🌻 Registrarse 🌻</StyledLink>
+          <StyledLink to="/register">🌻 Registrarse</StyledLink>
           <StyledLink to="/passreset">Olvidé mi contraseña</StyledLink>
         </div>
       </ButtonWrapper>
