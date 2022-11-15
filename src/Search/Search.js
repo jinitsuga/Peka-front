@@ -112,7 +112,6 @@ export default function Search() {
   const offerCards =
     offers.length > 0 &&
     offers.map((produ, index) => {
-      // const name = products.find((item) => item.id === produ.productId).name;
       return (
         <OfferCard
           beige

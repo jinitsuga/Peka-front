@@ -37,7 +37,7 @@ export default function Offer() {
   const allProducts = GetProducts();
   const navigate = useNavigate();
 
-  const productNames = allProducts.map((prod) => prod.name);
+  // const productNames = allProducts.map((prod) => prod.name);
 
   const filterProducts = (e) => {
     const filtered = allProducts.filter((prod) => {
@@ -48,7 +48,6 @@ export default function Offer() {
       return produ.name.includes(e.currentTarget.value.toLowerCase());
     });
     setShownProducts(filtered);
-    console.log(filtered);
   };
   const resetForm = () => {
     setOfferProduct({

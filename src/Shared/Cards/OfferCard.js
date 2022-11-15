@@ -6,9 +6,22 @@ import { Text } from "../Text";
 import { EditButton } from "../Button";
 
 export default function OfferCard(props) {
+  const [edit, setEdit] = React.useState(false);
+
+  const handleEdit = (e) => {
+    setEdit(true);
+  };
+
   return (
     <OfferCardWrapper beige={props.beige}>
-      <EditButton owner={props.owner}>Editar</EditButton>
+      <EditButton
+        owner={props.owner}
+        onClick={(e) => {
+          handleEdit(e);
+        }}
+      >
+        Editar
+      </EditButton>
       <SmallerTitle style={{ margin: "5px", marginTop: "15px" }}>
         {props.name}
       </SmallerTitle>
