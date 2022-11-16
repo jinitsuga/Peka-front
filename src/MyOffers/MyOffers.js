@@ -17,6 +17,8 @@ export default function MyOffers() {
   // Agregar el ID del usuario a localStorage para no perderlo en refresh
   //  ---------------
   async function deleteOffer(id) {
+    // next line does the following:
+    // finds the offer's id using the offer's index in the userOffers array
     const offerId = userOffers.find((offer, index) => index === id).id;
 
     const newOffers = userOffers.splice(offerId, 1);
