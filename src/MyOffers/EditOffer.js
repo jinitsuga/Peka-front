@@ -53,6 +53,9 @@ export default function EditOffer(props) {
         }}
       >
         <CloseButton
+          onClick={() => {
+            props.setEdit(false);
+          }}
           style={{
             width: "45px",
             height: "45px",

@@ -5,9 +5,11 @@ import { DetailsWrapper } from "../BadgeWrapper";
 import { Text } from "../Text";
 import { EditButton } from "../Button";
 import EditOffer from "../../MyOffers/EditOffer";
+import Confirmation from "../ Confirmation";
 
 export default function OfferCard(props) {
   const [edit, setEdit] = React.useState(false);
+  const [deleteOffer, setDeleteOffer] = React.useState(false);
 
   const handleEdit = (e) => {
     setEdit(true);
@@ -52,7 +54,7 @@ export default function OfferCard(props) {
       >
         Eliminar
       </EditButton>
-      <EditOffer show={edit} setEdit={setEdit}></EditOffer>
+      <EditOffer show={edit} setEdit={setEdit} id={props.id}></EditOffer>
     </OfferCardWrapper>
   );
 }
