@@ -7,15 +7,25 @@ import { InputQty } from "../Shared/InputField";
 import Select from "../Shared/Select/Select";
 import { BabyTitle } from "../Shared/Title";
 import { FormWrapper } from "../Shared/FormWrapper";
+import { TextArea } from "../Shared/TextArea";
+import { SecondaryButton } from "../Shared/Button";
 
 // popup modal with options to edit the offer (probably not editing product)
 // but editing quantities, description, etc
 
-export default function EditOffer() {
+export default function EditOffer(props) {
   const [offer, setOffer] = React.useState({ quantity: 0, unit: "" });
 
   return (
-    <Wrapper>
+    <Wrapper
+      style={{
+        display: props.show ? "flex" : "none",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "fixed",
+        bottom: "50%",
+      }}
+    >
       <FormWrapper>
         <BabyTitle>Cantidad:</BabyTitle>
         <DetailsWrapper>
@@ -41,7 +51,17 @@ export default function EditOffer() {
             ]}
           ></Select>
         </DetailsWrapper>
+        <BabyTitle>Descripción:</BabyTitle>
+        <TextArea
+          spellCheck="false"
+          name="description"
+          onChange={(e) => {
+            handleQty(e);
+          }}
+          placeholder="Puedes editar la descripción"
+        ></TextArea>
       </FormWrapper>
+      <SecondaryButton>Terminar edición</SecondaryButton>
     </Wrapper>
   );
 }
