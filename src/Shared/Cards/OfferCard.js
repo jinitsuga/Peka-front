@@ -52,7 +52,7 @@ export default function OfferCard(props) {
       >
         Eliminar
       </EditButton>
-      <EditOffer show={edit} stopEdit={setEdit}></EditOffer>
+      <EditOffer show={edit} setEdit={setEdit}></EditOffer>
     </OfferCardWrapper>
   );
 }

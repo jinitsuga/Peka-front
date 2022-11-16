@@ -14,6 +14,7 @@ export default function MyOffers() {
 
   //  ---------------
   // ESCONDER BOTÓN DESPUES DE MOSTRAR OFERTAS
+  // Agregar el ID del usuario a localStorage para no perderlo en refresh
   //  ---------------
   async function deleteOffer(id) {
     const offerId = userOffers.find((offer, index) => index === id).id;
