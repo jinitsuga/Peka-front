@@ -1,6 +1,7 @@
 import { SecondaryButton } from "./Button";
 import React from "react";
-import { Wrapper } from "./Wrapper";
+import { BabyTitle } from "./Title";
+import { DetailsWrapper } from "./BadgeWrapper";
 
 export default function Confirmation(props) {
   return (
@@ -15,10 +16,48 @@ export default function Confirmation(props) {
         background: "rgba(0, 0, 0, 0.8)",
       }}
     >
-      <Wrapper>
-        <SecondaryButton>Sí, eliminar</SecondaryButton>
-        <SecondaryButton>No!</SecondaryButton>
-      </Wrapper>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          position: "fixed",
+          left: "40%",
+          top: "30%",
+          bottom: "50%",
+          zIndex: "2",
+        }}
+      >
+        <BabyTitle
+          style={{
+            color: "#D2D79F",
+            border: "solid 1px",
+            fontSize: "22px",
+            padding: "10px",
+          }}
+        >
+          ¿Eliminar oferta?
+        </BabyTitle>
+        <DetailsWrapper>
+          <SecondaryButton
+            style={{ margin: "10px" }}
+            onClick={() => {
+              console.log(props.id);
+            }}
+          >
+            Sí, eliminar
+          </SecondaryButton>
+          <SecondaryButton
+            style={{ margin: "10px" }}
+            onClick={() => {
+              props.setDeleteOffer(false);
+            }}
+          >
+            No!
+          </SecondaryButton>
+        </DetailsWrapper>
+      </div>
     </div>
   );
 }

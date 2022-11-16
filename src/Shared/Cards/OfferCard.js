@@ -49,12 +49,17 @@ export default function OfferCard(props) {
         owner={props.owner}
         red
         onClick={(e) => {
-          props.delete(props.id);
+          setDeleteOffer(true);
         }}
       >
         Eliminar
       </EditButton>
       <EditOffer show={edit} setEdit={setEdit} id={props.id}></EditOffer>
+      <Confirmation
+        show={deleteOffer}
+        setDeleteOffer={setDeleteOffer}
+        id={props.id}
+      ></Confirmation>
     </OfferCardWrapper>
   );
 }
