@@ -14,7 +14,17 @@ import { SecondaryButton } from "../Shared/Button";
 // but editing quantities, description, etc
 
 export default function EditOffer(props) {
-  const [offer, setOffer] = React.useState({ quantity: 0, unit: "" });
+  const [offer, setOffer] = React.useState({
+    quantity: 0,
+    quantityUnit: "",
+    description: "",
+  });
+
+  const handleQty = (e) => {
+    setOffer((oldOffer) => {
+      return { ...oldOffer, [e.target.name]: e.target.value };
+    });
+  };
 
   return (
     <Wrapper
@@ -22,8 +32,14 @@ export default function EditOffer(props) {
         display: props.show ? "flex" : "none",
         justifyContent: "center",
         alignItems: "center",
+        width: "250px",
+        height: "275px",
         position: "fixed",
+        left: "40%",
+        top: "30%",
         bottom: "50%",
+        zIndex: "2",
+        border: "solid 2px #483838",
       }}
     >
       <FormWrapper>
@@ -33,7 +49,7 @@ export default function EditOffer(props) {
             name="quantity"
             min="0"
             type="number"
-            onChange={() => {
+            onChange={(e) => {
               handleQty(e);
             }}
           />
@@ -61,7 +77,13 @@ export default function EditOffer(props) {
           placeholder="Puedes editar la descripción"
         ></TextArea>
       </FormWrapper>
-      <SecondaryButton>Terminar edición</SecondaryButton>
+      <SecondaryButton
+        onClick={() => {
+          props.stopEdit();
+        }}
+      >
+        Terminar edición
+      </SecondaryButton>
     </Wrapper>
   );
 }

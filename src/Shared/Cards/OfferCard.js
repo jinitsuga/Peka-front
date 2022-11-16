@@ -4,6 +4,7 @@ import { SmallerTitle, BabyTitle } from "../Title";
 import { DetailsWrapper } from "../BadgeWrapper";
 import { Text } from "../Text";
 import { EditButton } from "../Button";
+import EditOffer from "../../MyOffers/EditOffer";
 
 export default function OfferCard(props) {
   const [edit, setEdit] = React.useState(false);
@@ -11,6 +12,8 @@ export default function OfferCard(props) {
   const handleEdit = (e) => {
     setEdit(true);
   };
+
+  async function editOffer() {}
 
   return (
     <OfferCardWrapper beige={props.beige}>
@@ -49,6 +52,7 @@ export default function OfferCard(props) {
       >
         Eliminar
       </EditButton>
+      <EditOffer show={edit} stopEdit={setEdit}></EditOffer>
     </OfferCardWrapper>
   );
 }

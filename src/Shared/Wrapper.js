@@ -55,7 +55,8 @@ const OfferCardWrapper = styled(CardWrapper)`
   justify-self: center;
   &:hover {
     transition-duration: 0.2s;
-    transform: scale(1.05);
+    transform: none;
+    box-shadow: 6px 3px 6px black;
   }
 `;
 

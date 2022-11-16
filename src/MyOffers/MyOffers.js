@@ -12,6 +12,9 @@ export default function MyOffers() {
 
   const [userOffers, setUserOffers] = React.useState([]);
 
+  //  ---------------
+  // ESCONDER BOTÓN DESPUES DE MOSTRAR OFERTAS
+  //  ---------------
   async function deleteOffer(id) {
     const offerId = userOffers.find((offer, index) => index === id).id;
 
@@ -57,7 +60,6 @@ export default function MyOffers() {
       .then((response) => response.text())
       .then((result) => {
         setUserOffers(JSON.parse(result));
-        console.log(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));
   }
