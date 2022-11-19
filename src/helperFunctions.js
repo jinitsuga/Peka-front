@@ -5,6 +5,9 @@ const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 // id, method, params, process data
+
+// helper with body (PUT, POST)
+// Pending: bodyless helpers (GET, DELETE)
 const editOffer = async (id, path, method, params, fn) => {
   const reqData = JSON.stringify(params);
 
