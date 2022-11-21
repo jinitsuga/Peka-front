@@ -10,7 +10,7 @@ myHeaders.append("Content-Type", "application/json");
 // Pending: bodyless helpers (GET, DELETE)
 const editOffer = async (path, method, params, fn) => {
   const reqData = JSON.stringify(params);
-
+  console.log(reqData);
   const reqOptions = {
     method: method,
     headers: myHeaders,
@@ -26,10 +26,13 @@ const editOffer = async (path, method, params, fn) => {
         .then((result) => {
           const data = JSON.parse(result);
           console.log(data);
-          fn(data);
+        })
+        .then((data) => {
+          fn();
         })
         .catch((err) => console.log("error", err))
   );
+  console.log("offer editada");
 };
 
 export { editOffer };

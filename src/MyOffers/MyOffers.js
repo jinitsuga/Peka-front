@@ -76,12 +76,14 @@ export default function MyOffers() {
           owner={true}
           name={offer.product.name}
           key={index}
+          productId={offer.product.id}
           quantity={offer.quantity}
           qtyUnit={offer.quantityUnit}
           type={offer.type}
           description={offer.description}
           id={index}
           delete={deleteOffer}
+          updateOffers={setUserOffers}
         />
       );
     });

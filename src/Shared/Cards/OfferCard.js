@@ -54,7 +54,13 @@ export default function OfferCard(props) {
       >
         Eliminar
       </EditButton>
-      <EditOffer show={edit} setEdit={setEdit} id={props.id}></EditOffer>
+      <EditOffer
+        updateOffers={props.updateOffers}
+        show={edit}
+        setEdit={setEdit}
+        id={props.id}
+        productId={props.productId}
+      ></EditOffer>
       <Confirmation
         show={deleteOffer}
         setDeleteOffer={setDeleteOffer}

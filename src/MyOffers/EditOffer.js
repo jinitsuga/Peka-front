@@ -18,7 +18,18 @@ export default function EditOffer(props) {
     quantityUnit: "",
     description: "",
     type: ["product", "seedling", "seeds"],
+    productId: props.productId,
   });
+
+  // Updates offers on the front by sending new state
+
+  const updateOffers = () => {
+    props.updateOffers((oldOffers) => {
+      const newOffers = oldOffers.filter((offer) => offer.id === props.id);
+
+      return { ...newOffers, offer };
+    });
+  };
 
   const handleQty = (e) => {
     setOffer((oldOffer) => {
@@ -108,7 +119,8 @@ export default function EditOffer(props) {
         </FormWrapper>
         <SecondaryButton
           onClick={() => {
-            editOffer(`offers/${props.id}`, "PUT");
+            editOffer(`offers/${props.id}`, "PUT", offer, updateOffers);
+            updateOffers();
             props.setEdit(false);
           }}
         >
