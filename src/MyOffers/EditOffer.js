@@ -1,12 +1,13 @@
 import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
-import { BadgesWrapper, DetailsWrapper } from "../Shared/BadgeWrapper";
+import { DetailsWrapper } from "../Shared/BadgeWrapper";
 import { InputQty } from "../Shared/InputField";
 import Select from "../Shared/Select/Select";
 import { BabyTitle } from "../Shared/Title";
 import { FormWrapper } from "../Shared/FormWrapper";
 import { TextArea } from "../Shared/TextArea";
 import { SecondaryButton, CloseButton } from "../Shared/Button";
+import { editOffer } from "../helperFunctions";
 
 // popup modal with options to edit the offer (probably not editing product)
 // but editing quantities, description, etc
@@ -16,10 +17,12 @@ export default function EditOffer(props) {
     quantity: 0,
     quantityUnit: "",
     description: "",
+    type: ["product", "seedling", "seeds"],
   });
 
   const handleQty = (e) => {
     setOffer((oldOffer) => {
+      console.log(offer);
       return { ...oldOffer, [e.target.name]: e.target.value };
     });
   };
@@ -81,7 +84,7 @@ export default function EditOffer(props) {
               onChange={(e) => {
                 handleQty(e);
               }}
-              name="unit"
+              name="quantityUnit"
               options={[
                 { name: "--Elige unidad--", value: null },
                 { name: "Kilos", value: "kilograms" },
@@ -105,6 +108,7 @@ export default function EditOffer(props) {
         </FormWrapper>
         <SecondaryButton
           onClick={() => {
+            editOffer(`offers/${props.id}`, "PUT");
             props.setEdit(false);
           }}
         >

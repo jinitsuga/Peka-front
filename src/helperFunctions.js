@@ -8,7 +8,7 @@ myHeaders.append("Content-Type", "application/json");
 
 // helper with body (PUT, POST)
 // Pending: bodyless helpers (GET, DELETE)
-const editOffer = async (id, path, method, params, fn) => {
+const editOffer = async (path, method, params, fn) => {
   const reqData = JSON.stringify(params);
 
   const reqOptions = {
@@ -31,3 +31,5 @@ const editOffer = async (id, path, method, params, fn) => {
         .catch((err) => console.log("error", err))
   );
 };
+
+export { editOffer };
