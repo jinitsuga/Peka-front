@@ -24,9 +24,7 @@ export default function EditOffer(props) {
 
   const updateOffers = () => {
     props.updateOffers((oldOffers) => {
-      const newOffers = oldOffers.filter((offer) => offer.id === props.id);
-
-      return { ...newOffers, offer };
+      return { ...oldOffers, offer };
     });
   };
 
