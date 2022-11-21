@@ -60,11 +60,12 @@ export default function OfferCard(props) {
         setEdit={setEdit}
         id={props.id}
         productId={props.productId}
+        offerId={props.offerId}
       ></EditOffer>
       <Confirmation
         show={deleteOffer}
         setDeleteOffer={setDeleteOffer}
-        id={props.id}
+        id={props.offerId}
       ></Confirmation>
     </OfferCardWrapper>
   );

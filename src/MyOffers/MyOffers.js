@@ -82,6 +82,7 @@ export default function MyOffers() {
           type={offer.type}
           description={offer.description}
           id={index}
+          offerId={offer.id}
           delete={deleteOffer}
           updateOffers={setUserOffers}
         />

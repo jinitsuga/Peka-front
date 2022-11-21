@@ -15,9 +15,8 @@ import { editOffer } from "../helperFunctions";
 export default function EditOffer(props) {
   const [offer, setOffer] = React.useState({
     quantity: 0,
-    quantityUnit: "",
-    description: "",
-    type: ["product", "seedling", "seeds"],
+    quantityUnit: "bundles",
+    type: "product",
     productId: props.productId,
   });
 
@@ -31,6 +30,12 @@ export default function EditOffer(props) {
     });
   };
 
+  const handleNumber = (e) => {
+    setOffer((oldOffer) => {
+      console.log(offer);
+      return { ...oldOffer, [e.target.name]: Number(e.target.value) };
+    });
+  };
   const handleQty = (e) => {
     setOffer((oldOffer) => {
       console.log(offer);
@@ -88,12 +93,12 @@ export default function EditOffer(props) {
               min="0"
               type="number"
               onChange={(e) => {
-                handleQty(e);
+                handleNumber(e);
               }}
             />
             <Select
               onChange={(e) => {
-                handleQty(e);
+                console.log("lol");
               }}
               name="quantityUnit"
               options={[
@@ -112,14 +117,14 @@ export default function EditOffer(props) {
             spellCheck="false"
             name="description"
             onChange={(e) => {
-              handleQty(e);
+              console.log("lol descrpción");
             }}
             placeholder="Puedes editar la descripción"
           ></TextArea>
         </FormWrapper>
         <SecondaryButton
           onClick={() => {
-            editOffer(`offers/${props.id}`, "PUT", offer, updateOffers);
+            editOffer(`offers/${props.offerId}`, "PUT", offer, updateOffers);
             updateOffers();
             props.setEdit(false);
           }}
