@@ -99,7 +99,7 @@ export default function EditOffer(props) {
             />
             <Select
               onChange={(e) => {
-                console.log("lol");
+                handleString(e);
               }}
               name="quantityUnit"
               options={[
