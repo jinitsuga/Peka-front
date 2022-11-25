@@ -10,7 +10,7 @@ myHeaders.append("Content-Type", "application/json");
 // Pending: bodyless helpers (GET, DELETE)
 const editOffer = async (path, method, params, fn) => {
   const reqData = JSON.stringify(params);
-  console.log(path, method, params);
+
   const reqOptions = {
     method: method,
     headers: myHeaders,
@@ -35,4 +35,31 @@ const editOffer = async (path, method, params, fn) => {
   console.log("offer editada");
 };
 
-export { editOffer };
+async function deleteOffer(id, index, userOffers, fn) {
+  // const offerId = userOffers.find((offer, index) => index === id).id;
+
+  const newOffers = userOffers.filter((offer) => offer != userOffers[index]);
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: "DELETE",
+    headers: myHeaders,
+    redirect: "follow",
+    credentials: "include",
+  };
+
+  await fetch(`https://peka-api-wt2x.onrender.com/offers/${id}`, requestOptions)
+    .then((response) => {
+      response.text();
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => console.log("error", err));
+
+  fn(newOffers);
+}
+
+export { editOffer, deleteOffer };

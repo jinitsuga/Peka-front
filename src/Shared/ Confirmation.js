@@ -2,6 +2,7 @@ import { SecondaryButton } from "./Button";
 import React from "react";
 import { BabyTitle } from "./Title";
 import { DetailsWrapper } from "./BadgeWrapper";
+import { deleteOffer } from "../helperFunctions";
 
 export default function Confirmation(props) {
   return (
@@ -43,7 +44,13 @@ export default function Confirmation(props) {
           <SecondaryButton
             style={{ margin: "10px" }}
             onClick={() => {
-              console.log(props.id);
+              deleteOffer(
+                props.id,
+                props.index,
+                props.userOffers,
+                props.updateOffers
+              );
+              console.log(props.offerId);
             }}
           >
             Sí, eliminar

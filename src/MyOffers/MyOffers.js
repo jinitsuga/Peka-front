@@ -16,34 +16,6 @@ export default function MyOffers() {
   // ESCONDER BOTÓN DESPUES DE MOSTRAR OFERTAS
   // Agregar el ID del usuario a localStorage para no perderlo en refresh
   //  ---------------
-  async function deleteOffer(id) {
-    // next line does the following:
-    // finds the offer's id using the offer's index in the userOffers array
-    const offerId = userOffers.find((offer, index) => index === id).id;
-
-    const newOffers = userOffers.splice(offerId, 1);
-
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const requestOptions = {
-      method: "DELETE",
-      headers: myHeaders,
-      redirect: "follow",
-      credentials: "include",
-    };
-    await fetch(
-      `https://peka-api-wt2x.onrender.com/offers/${offerId}`,
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => console.log("error", err));
-
-    setUserOffers(newOffers);
-  }
 
   async function getOffers() {
     const myHeaders = new Headers();
@@ -83,8 +55,8 @@ export default function MyOffers() {
           description={offer.description}
           id={index}
           offerId={offer.id}
-          delete={deleteOffer}
           updateOffers={setUserOffers}
+          userOffers={userOffers}
         />
       );
     });

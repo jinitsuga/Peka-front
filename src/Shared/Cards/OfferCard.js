@@ -15,8 +15,6 @@ export default function OfferCard(props) {
     setEdit(true);
   };
 
-  async function editOffer() {}
-
   return (
     <OfferCardWrapper beige={props.beige}>
       <EditButton
@@ -65,7 +63,12 @@ export default function OfferCard(props) {
       <Confirmation
         show={deleteOffer}
         setDeleteOffer={setDeleteOffer}
+        // offer id from the backend:
         id={props.offerId}
+        updateOffers={props.updateOffers}
+        userOffers={props.userOffers}
+        // offer index in the frontend offers array:
+        index={props.id}
       ></Confirmation>
     </OfferCardWrapper>
   );
