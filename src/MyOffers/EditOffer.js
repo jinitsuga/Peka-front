@@ -18,6 +18,7 @@ export default function EditOffer(props) {
     quantityUnit: "bundles",
     type: "product",
     productId: props.productId,
+    description: "",
   });
 
   // Updates offers on the front by sending new state
@@ -28,13 +29,15 @@ export default function EditOffer(props) {
     });
   };
 
+  // 2 different functions to handle diff type of data 'cause of how the api receives data.
+
   const handleNumber = (e) => {
     setOffer((oldOffer) => {
       console.log(offer);
       return { ...oldOffer, [e.target.name]: Number(e.target.value) };
     });
   };
-  const handleQty = (e) => {
+  const handleString = (e) => {
     setOffer((oldOffer) => {
       console.log(offer);
       return { ...oldOffer, [e.target.name]: e.target.value };
@@ -115,7 +118,7 @@ export default function EditOffer(props) {
             spellCheck="false"
             name="description"
             onChange={(e) => {
-              console.log("lol descrpción");
+              handleString(e);
             }}
             placeholder="Puedes editar la descripción"
           ></TextArea>
