@@ -36,13 +36,10 @@ export function UserContextProvider({ children }) {
     const reqOptions = { method: "GET", redirect: "follow" };
 
     fetch(`${process.env.REACT_APP_API_URL}products`, reqOptions)
-      // .then((response) => response.text())
       .then((result) => result.text())
       .then((result) => JSON.parse(result))
       .then((products) => setProducts(products))
       .catch((err) => console.log("error", err));
-
-    // setProducts(productsList);
   }, []);
 
   const [loggedIn, setLoggedIn] = useState(false);

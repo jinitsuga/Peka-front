@@ -5,6 +5,7 @@ import OfferCard from "../Shared/Cards/OfferCard";
 import { BabyTitle } from "../Shared/Title";
 import { SecondaryButton } from "../Shared/Button";
 import { GetProducts } from "../Context/UserContext";
+import { getUserOffers } from "../helperFunctions";
 
 export default function MyOffers() {
   const userData = UserInfo();
@@ -69,7 +70,7 @@ export default function MyOffers() {
       </BabyTitle>
       <SecondaryButton
         onClick={() => {
-          getOffers();
+          getUserOffers("GET", userData.id, setUserOffers);
         }}
       >
         Ver mis ofertas

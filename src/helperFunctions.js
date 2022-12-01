@@ -4,10 +4,6 @@
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-// id, method, params, process data
-
-// helper with body (PUT, POST)
-// Pending: bodyless helpers (GET, DELETE)
 const editOffer = async (path, method, params, fn) => {
   const reqData = JSON.stringify(params);
 
@@ -84,4 +80,26 @@ const sendOffer = async (method, params) => {
     .catch((error) => console.log("error", error));
 };
 
-export { editOffer, deleteOffer, sendOffer };
+const getUserOffers = async (method, userid, fn) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: method,
+    headers: myHeaders,
+    redirect: "follow",
+    credentials: "include",
+  };
+
+  await fetch(
+    `${process.env.REACT_APP_API_URL}users/${userid}/offers`,
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      fn(JSON.parse(result));
+    })
+    .catch((error) => console.log("error", error));
+};
+
+export { editOffer, deleteOffer, sendOffer, getUserOffers };

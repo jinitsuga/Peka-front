@@ -42,7 +42,9 @@ export default function OfferCard(props) {
           {props.type}
         </BabyTitle>
       </DetailsWrapper>
-      <Text style={{ marginBottom: "30px" }}>{props.description}</Text>
+      <Text style={{ marginBottom: "30px", textAlign: "center" }}>
+        {props.description}
+      </Text>
       <EditButton
         owner={props.owner}
         red
