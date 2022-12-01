@@ -14,6 +14,7 @@ import RadioBtn from "../Shared/Radio";
 import { TextArea } from "../Shared/TextArea";
 import { Alert } from "../Shared/ToastAlert";
 import { useNavigate } from "react-router-dom";
+import { sendOffer } from "../helperFunctions";
 
 export default function Offer() {
   const [offerProduct, setOfferProduct] = React.useState({
@@ -107,34 +108,12 @@ export default function Offer() {
       }, 4000);
     }
   };
-
-  async function sendOffer() {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const reqData = JSON.stringify({
-      quantity: Number(offerProduct.quantity),
-      quantityUnit: offerProduct.unit,
-      type: offerProduct.type,
-      productId: Number(offerProduct.productId),
-      description: offerProduct.description,
-      pictures: offerProduct.pictures,
-    });
-
-    console.log(reqData);
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: reqData,
-      redirect: "follow",
-      credentials: "include",
-    };
-
-    await fetch("https://peka-api-wt2x.onrender.com/offers", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }
+  // quantity: Number(offerProduct.quantity),
+  // quantityUnit: offerProduct.unit,
+  // type: offerProduct.type,
+  // productId: Number(offerProduct.productId),
+  // description: offerProduct.description,
+  // pictures: offerProduct.pictures,
 
   const offerBadges =
     offerProduct.badges.length > 0 &&
@@ -236,8 +215,15 @@ export default function Offer() {
         <SecondaryButton
           onClick={(e) => {
             handleSubmit(e);
-
-            sendOffer();
+            const offerData = {
+              quantity: Number(offerProduct.quantity),
+              quantityUnit: offerProduct.unit,
+              type: offerProduct.type,
+              productId: Number(offerProduct.productId),
+              description: offerProduct.description,
+              pictures: offerProduct.pictures,
+            };
+            sendOffer("POST", offerData);
             // Navegar de nuevo aquí para 'reiniciar' el form?
           }}
           style={{

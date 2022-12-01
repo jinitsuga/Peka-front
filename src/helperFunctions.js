@@ -62,4 +62,26 @@ async function deleteOffer(id, index, userOffers, fn) {
   fn(newOffers);
 }
 
-export { editOffer, deleteOffer };
+const sendOffer = async (method, params) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const reqData = JSON.stringify(params);
+
+  console.log(reqData);
+
+  const requestOptions = {
+    method: method,
+    headers: myHeaders,
+    body: reqData,
+    redirect: "follow",
+    credentials: "include",
+  };
+
+  await fetch(`${process.env.REACT_APP_API_URL}offers`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+};
+
+export { editOffer, deleteOffer, sendOffer };
