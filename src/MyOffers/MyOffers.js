@@ -18,28 +18,6 @@ export default function MyOffers() {
   // Agregar el ID del usuario a localStorage para no perderlo en refresh
   //  ---------------
 
-  async function getOffers() {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-      credentials: "include",
-    };
-
-    await fetch(
-      `https://peka-api-wt2x.onrender.com/users/${userData.id}/offers`,
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => {
-        setUserOffers(JSON.parse(result));
-      })
-      .catch((error) => console.log("error", error));
-  }
-
   const offers =
     userOffers.length > 0 &&
     userOffers.map((offer, index) => {
@@ -69,7 +47,8 @@ export default function MyOffers() {
       </BabyTitle>
       <SecondaryButton
         onClick={() => {
-          getUserOffers("GET", userData.id, setUserOffers);
+          const userId = Number(localStorage.id);
+          getUserOffers("GET", userId, setUserOffers);
         }}
       >
         Ver mis ofertas

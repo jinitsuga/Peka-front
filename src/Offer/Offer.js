@@ -38,8 +38,6 @@ export default function Offer() {
   const allProducts = GetProducts();
   const navigate = useNavigate();
 
-  // const productNames = allProducts.map((prod) => prod.name);
-
   const filterProducts = (e) => {
     const filtered = allProducts.filter((prod) => {
       const produ = {
@@ -108,12 +106,6 @@ export default function Offer() {
       }, 4000);
     }
   };
-  // quantity: Number(offerProduct.quantity),
-  // quantityUnit: offerProduct.unit,
-  // type: offerProduct.type,
-  // productId: Number(offerProduct.productId),
-  // description: offerProduct.description,
-  // pictures: offerProduct.pictures,
 
   const offerBadges =
     offerProduct.badges.length > 0 &&
@@ -128,7 +120,6 @@ export default function Offer() {
           type="text"
           name="make-offer"
           onChange={(e) => {
-            console.log(e.target.value);
             setOfferInput(e.target.value);
             filterProducts(e);
           }}

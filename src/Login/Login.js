@@ -8,7 +8,7 @@ import { FormWrapper } from "../Shared/FormWrapper";
 import { StyledLink } from "../Shared/StyledLink";
 import { ButtonWrapper } from "./ButtonWrapper";
 import { ErrorMessage } from "../Shared/ErrorMsg";
-import { UserInfo, UpdateUser, UpdateLogin } from "../Context/UserContext";
+import { UpdateUser } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 console.log(`${process.env.REACT_APP_API_URL}signin`);
 export default function Login() {
@@ -16,11 +16,7 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  // Context variables
-  const userInfo = UserInfo();
   const updateUser = UpdateUser();
-
-  const logUser = UpdateLogin();
 
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
@@ -63,6 +59,7 @@ export default function Login() {
           localStorage.setItem("name", respObj.name);
           localStorage.setItem("email", respObj.email);
           localStorage.setItem("loggedIn", true);
+          localStorage.setItem("id", respObj.id);
         }
       })
       .then(() => {
@@ -105,11 +102,9 @@ export default function Login() {
   const passwordValid = formData[1].pattern.test(loginData.password);
 
   async function handleLogin(e) {
-    {
-      await logUserIn();
+    await logUserIn();
 
-      console.log("user logged in");
-    }
+    console.log("user logged in");
   }
 
   return (
