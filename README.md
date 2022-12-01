@@ -12,12 +12,16 @@ Say I planted a bit too many lettuces at the same time, so they're all ready to 
 
 ### New concepts to implement
 
-Since Peka is a fairly ambitious and large enough project, I thought it'd be a good idea to start implementing a couple of new concepts:
+Since Peka is a fairly ambitious project, I thought it'd be a good idea to start implementing a couple of new concepts:
 
 - styled-components for styling. Took some time deciding between these and TailwindCSS, I really liked some aspects of styled Cs so we're going with it for now.
 - Context API. While I have tinkered a bit with Context in the past, given the size of this project, it'll definitely be useful/needed, which makes this a great opportunity for getting more familiar with it.
 
-### `npm start`
+### Little gif showcase:
 
-After cloning the repo, this command will run the app locally!
+![peka-](https://user-images.githubusercontent.com/73081185/204346793-6f4328e1-3482-4669-b38d-ec27977bde1c.gif)
+
+### Running the project locally
+
+After cloning the repo, make sure you install all dependencies by going to the directory's location on your terminal and running `npm i`. Then you can run the app locally by executing `npm start`!
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
