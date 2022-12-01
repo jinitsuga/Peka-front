@@ -209,9 +209,16 @@ export function Home(props) {
   };
   return (
     <Wrapper>
-      <DetailsWrapper style={{ flexDirection: "column", marginBottom: "50px" }}>
+      <DetailsWrapper
+        style={{
+          flexDirection: "column",
+          paddingBottom: "25px",
+          marginBotton: "45px",
+          borderBottom: "solid 4px",
+        }}
+      >
         <SmallerTitle>¿Qué te gustaría ofrecer?</SmallerTitle>
-        <Text>
+        <Text style={{ margin: "0px" }}>
           Si tienes vegetales para intercambiar, puedes dirigirte a{" "}
           <TextLink to="/makeoffer">Ofertar</TextLink> y completar los datos con
           lo que quieras ofrecer!
@@ -223,7 +230,7 @@ export function Home(props) {
         <Text>
           Si buscas algo en particular, o prefieres simplemente mirar lo que la
           gente está ofreciendo, puedes dirigirte a
-          <TextLink to="/search"> Buscar</TextLink> y realizar tu búsqueda!
+          <TextLink to="/search"> Buscar </TextLink> y realizar tu búsqueda!
         </Text>
       </DetailsWrapper>
     </Wrapper>
