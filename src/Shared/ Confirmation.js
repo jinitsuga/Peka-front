@@ -50,7 +50,7 @@ export default function Confirmation(props) {
                 props.userOffers,
                 props.updateOffers
               );
-              console.log(props.offerId);
+              props.setDeleteOffer(false);
             }}
           >
             Sí, eliminar
