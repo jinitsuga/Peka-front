@@ -10,7 +10,7 @@ import { ButtonWrapper } from "./ButtonWrapper";
 import { ErrorMessage } from "../Shared/ErrorMsg";
 import { UserInfo, UpdateUser, UpdateLogin } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
-
+console.log(`${process.env.REACT_APP_API_URL}signin`);
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
 
@@ -47,7 +47,7 @@ export default function Login() {
     };
 
     let responseStatus = "";
-    await fetch("https://peka-api-wt2x.onrender.com/signin", reqOptions)
+    await fetch(`${process.env.REACT_APP_API_URL}signin`, reqOptions)
       .then((response) => {
         responseStatus = response.statusText;
         return response.text();

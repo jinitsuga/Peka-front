@@ -8,7 +8,7 @@ export default function Signout() {
   const navigate = useNavigate();
 
   async function signOut() {
-    await fetch("https://peka-api-wt2x.onrender.com/signout", {
+    await fetch(`${process.env.REACT_APP_API_URL}signout`, {
       method: "GET",
       credentials: "include",
     })

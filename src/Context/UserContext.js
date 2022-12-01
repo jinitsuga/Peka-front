@@ -35,7 +35,7 @@ export function UserContextProvider({ children }) {
   React.useEffect(() => {
     const reqOptions = { method: "GET", redirect: "follow" };
 
-    fetch("https://peka-api-wt2x.onrender.com/products", reqOptions)
+    fetch(`${process.env.REACT_APP_API_URL}products`, reqOptions)
       // .then((response) => response.text())
       .then((result) => result.text())
       .then((result) => JSON.parse(result))

@@ -19,7 +19,7 @@ const editOffer = async (path, method, params, fn) => {
     credentials: "include",
   };
 
-  await fetch(`https://peka-api-wt2x.onrender.com/${path}`, reqOptions).then(
+  await fetch(`${process.env.REACT_APP_API_URL}${path}`, reqOptions).then(
     (response) =>
       response
         .text()
@@ -50,7 +50,7 @@ async function deleteOffer(id, index, userOffers, fn) {
     credentials: "include",
   };
 
-  await fetch(`https://peka-api-wt2x.onrender.com/offers/${id}`, requestOptions)
+  await fetch(`${process.env.REACT_APP_API_URL}offers/${id}`, requestOptions)
     .then((response) => {
       response.text();
     })
