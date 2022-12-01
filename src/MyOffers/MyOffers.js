@@ -43,7 +43,6 @@ export default function MyOffers() {
   const offers =
     userOffers.length > 0 &&
     userOffers.map((offer, index) => {
-      console.log(offer);
       return (
         <OfferCard
           owner={true}

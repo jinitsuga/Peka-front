@@ -65,6 +65,10 @@ export default function Login() {
           localStorage.setItem("loggedIn", true);
         }
       })
+      .then(() => {
+        navigate("/home");
+      })
+
       // .then(() => {
       //   if (responseStatus === "OK") {
       //     navigate("/");
@@ -103,7 +107,7 @@ export default function Login() {
   async function handleLogin(e) {
     {
       await logUserIn();
-      navigate("/");
+
       console.log("user logged in");
     }
   }

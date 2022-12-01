@@ -22,12 +22,27 @@ export default function RouteSwitch() {
     <Routes>
       <Route path="/welcome" element={<Welcome />}></Route>
       <Route
-        path="/"
+        path="/home"
         element={
           <div>
             <Nav />
             <Home setProducts={setProducts} />
           </div>
+        }
+      ></Route>
+      <Route
+        path="/"
+        element={
+          localStorage.loggedIn ? (
+            <div>
+              <Nav />
+              <Home setProducts={setProducts} />
+            </div>
+          ) : (
+            <div>
+              <Welcome />
+            </div>
+          )
         }
       ></Route>
       <Route path="/register" element={<Register />}></Route>

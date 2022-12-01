@@ -31,7 +31,7 @@ const editOffer = async (path, method, params, fn) => {
   console.log("offer editada");
 };
 
-async function deleteOffer(id, index, userOffers, fn) {
+const deleteOffer = async (id, index, userOffers, fn) => {
   // const offerId = userOffers.find((offer, index) => index === id).id;
 
   const newOffers = userOffers.filter((offer) => offer != userOffers[index]);
@@ -56,7 +56,7 @@ async function deleteOffer(id, index, userOffers, fn) {
     .catch((err) => console.log("error", err));
 
   fn(newOffers);
-}
+};
 
 const sendOffer = async (method, params) => {
   const myHeaders = new Headers();
