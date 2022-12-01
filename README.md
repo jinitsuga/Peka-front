@@ -1,5 +1,7 @@
 # What's Peka, and why?
 
+Live DEMO (in Spanish for now) ---> https://peka.ares.uy/
+
 The main idea behind this project is to potentially leave something for the community while I get a decent amount of frontend practice, and hopefully some backend as well when we start implementing the chat/messaging system (still deciding how we'll tackle this one).
 
 Peka (from Finn mythology Pekko/Pekka, god of crops) is a very simple social network, with the intention of allowing people that grow vegetables/fruits in their gardens to trade with each other, since it's very easy to have excess of X or Y vegetable while not being able to grow or have enough of another one, and where we live, it's quite common for people to plant at least one or two things in their garden.
