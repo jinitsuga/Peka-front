@@ -102,4 +102,31 @@ const getUserOffers = async (method, userid, fn) => {
     .catch((error) => console.log("error", error));
 };
 
-export { editOffer, deleteOffer, sendOffer, getUserOffers };
+const makeSearch = async (method, prodId, fn) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const params = new URLSearchParams({ products: prodId });
+
+  const requestOptions = {
+    method: method,
+    headers: myHeaders,
+    redirect: "follow",
+    credentials: "include",
+  };
+
+  await fetch(
+    `${process.env.REACT_APP_API_URL}offers/search?${params}`,
+    //
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      fn(JSON.parse(result));
+      console.log(JSON.parse(result));
+    })
+
+    .catch((error) => console.log("error", error));
+};
+
+export { editOffer, deleteOffer, sendOffer, getUserOffers, makeSearch };

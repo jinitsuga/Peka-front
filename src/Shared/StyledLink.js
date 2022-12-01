@@ -26,4 +26,9 @@ const NavLink = styled(StyledLink)`
     border-bottom: solid 2px;
   }
 `;
-export { StyledLink, NavLink };
+
+const TextLink = styled(NavLink)`
+  font-size: 15px;
+  padding: 0px;
+`;
+export { StyledLink, NavLink, TextLink };

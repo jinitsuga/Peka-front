@@ -9,6 +9,7 @@ import ListedProducts from "../Shared/ListedProducts";
 import Checkbox from "../Shared/Checkbox";
 import { BabyTitle } from "../Shared/Title";
 import OfferCard from "../Shared/Cards/OfferCard";
+import { makeSearch } from "../helperFunctions";
 
 export default function Search() {
   const [inputField, setInputField] = React.useState("");
@@ -82,32 +83,32 @@ export default function Search() {
     });
   }
 
-  async function makeSearch() {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  // async function makeSearch() {
+  //   const myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
 
-    const params = new URLSearchParams({ products: searchProduct.productId });
+  //   const params = new URLSearchParams({ products: searchProduct.productId });
 
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-      credentials: "include",
-    };
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: myHeaders,
+  //     redirect: "follow",
+  //     credentials: "include",
+  //   };
 
-    await fetch(
-      `https://peka-api-wt2x.onrender.com/offers/search?${params}`,
-      //
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => {
-        setOffers(JSON.parse(result));
-        console.log(JSON.parse(result));
-      })
+  //   await fetch(
+  //     `https://peka-api-wt2x.onrender.com/offers/search?${params}`,
+  //     //
+  //     requestOptions
+  //   )
+  //     .then((response) => response.text())
+  //     .then((result) => {
+  //       setOffers(JSON.parse(result));
+  //       console.log(JSON.parse(result));
+  //     })
 
-      .catch((error) => console.log("error", error));
-  }
+  //     .catch((error) => console.log("error", error));
+  // }
 
   const offerCards =
     offers.length > 0 &&
@@ -155,7 +156,7 @@ export default function Search() {
       </DetailsWrapper>
       <SecondaryButton
         onClick={() => {
-          makeSearch();
+          makeSearch("GET", searchProduct.productId, setOffers);
         }}
         style={{ display: searchProduct.badges.length > 0 ? "flex" : "none" }}
       >

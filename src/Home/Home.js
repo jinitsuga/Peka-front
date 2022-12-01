@@ -1,12 +1,14 @@
 import React from "react";
 import { Wrapper } from "../Shared/Wrapper";
-import { FormWrapper } from "../Shared/FormWrapper";
+import { TextLink } from "../Shared/StyledLink";
 import { FilterInput } from "../Shared/FilterInput";
 import { GetProducts } from "../Context/UserContext";
 import ListedProducts from "../Shared/ListedProducts";
 import { Badge } from "./ItemBadge";
 import { BadgesWrapper, DetailsWrapper } from "../Shared/BadgeWrapper";
 import { SecondaryButton } from "../Shared/Button";
+import { SmallerTitle } from "../Shared/Title";
+import { Text } from "../Shared/Text";
 
 export function Home(props) {
   // React.useEffect(() => {
@@ -207,61 +209,23 @@ export function Home(props) {
   };
   return (
     <Wrapper>
-      <FormWrapper>
-        <FilterInput
-          style={{ marginBottom: "100px" }}
-          label="¿Qué te gustaría ofrecer?"
-          placeholder="ej: tomate, rúcula, apio..."
-          onChange={(e) => {
-            setProductOffer((oldOffer) => {
-              return { ...oldOffer, input: e.target.value };
-            });
-            filterProducts(e, "offer");
-          }}
-        ></FilterInput>
-        <DetailsWrapper>
-          <BadgesWrapper>{offerItemBadges}</BadgesWrapper>
-          <SecondaryButton
-            style={{
-              display: productOffer.sendItems.length > 0 ? "flex" : "none",
-            }}
-          >
-            Ofrecer
-          </SecondaryButton>
-        </DetailsWrapper>
-        <ListedProducts
-          addItem={addItem}
-          inputField={productOffer.input}
-          filteredProducts={shownProducts.products}
-        ></ListedProducts>
-
-        {/* SEARCHING  */}
-        <FilterInput
-          label="¿Qué estás buscando?"
-          placeholder="ej: lechuga, limones, menta..."
-          onChange={(e) => {
-            filterProducts(e, "search");
-            setProductSearch((oldSearch) => {
-              return { ...oldSearch, input: e.target.value };
-            });
-          }}
-        ></FilterInput>
-        <DetailsWrapper>
-          <BadgesWrapper> {searchItemBadges} </BadgesWrapper>
-          <SecondaryButton
-            style={{
-              display: productSearch.sendItems.length > 0 ? "flex" : "none",
-            }}
-          >
-            Buscar
-          </SecondaryButton>
-        </DetailsWrapper>
-        <ListedProducts
-          addItem={addItem}
-          inputField={productSearch.input}
-          filteredProducts={shownProducts.products}
-        ></ListedProducts>
-      </FormWrapper>
+      <DetailsWrapper style={{ flexDirection: "column", marginBottom: "50px" }}>
+        <SmallerTitle>¿Qué te gustaría ofrecer?</SmallerTitle>
+        <Text>
+          Si tienes vegetales para intercambiar, puedes dirigirte a{" "}
+          <TextLink to="/makeoffer">Ofertar</TextLink> y completar los datos con
+          lo que quieras ofrecer!
+        </Text>
+      </DetailsWrapper>
+      {/* SEARCHING  */}
+      <DetailsWrapper style={{ flexDirection: "column" }}>
+        <SmallerTitle>¿Qué estás buscando?</SmallerTitle>
+        <Text>
+          Si buscas algo en particular, o prefieres simplemente mirar lo que la
+          gente está ofreciendo, puedes dirigirte a
+          <TextLink to="/search"> Buscar</TextLink> y realizar tu búsqueda!
+        </Text>
+      </DetailsWrapper>
     </Wrapper>
   );
 }
